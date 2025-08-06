@@ -1,14 +1,14 @@
 "use client";
-import { useState } from "react";
 import {
    dashboardItems,
    pagesItems,
    settingsItems,
 } from "../../../../services/constants/MENU_ITEMS";
 import SidebarItem from "./SidebarItem";
+import { useSidebar } from "@/services/context/SidebarContext";
 
 function DashboardSidebar() {
-   const [activeId, setActiveId] = useState("dashboard");
+   const { activeId, setActiveId } = useSidebar();
    return (
       <div className="min-w-61 bg-foreground flex-col flex py-6 items-center ">
          <h1 className="font-extrabold text-xl text-black mb-8">
