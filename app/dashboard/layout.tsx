@@ -1,5 +1,5 @@
-import DashboardHeader from "./components/DashboardHeader";
-import DashboardSidebar from "./components/DashboardSidebar";
+import { DashboardHeader } from "@/components/layouts";
+import { DashboardSidebar } from "@/components/layouts/";
 
 function Layout({ children }: { children: React.ReactNode }) {
    return (
@@ -7,7 +7,9 @@ function Layout({ children }: { children: React.ReactNode }) {
          <DashboardSidebar />
          <div className="flex flex-col w-full h-full">
             <DashboardHeader />
-            <div className="flex-1">{children}</div>
+            <div className="flex-1 border-t border-l border-border">
+               {children}
+            </div>
          </div>
       </div>
    );

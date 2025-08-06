@@ -5,12 +5,12 @@ import {
    pagesItems,
    settingsItems,
 } from "../../../services/constants/MENU_ITEMS";
-import SidebarItem from "./DashboardSidebar/SidebarItem";
+import SidebarItem from "./dashboardSidebarComponents/SidebarItem";
 
 function DashboardSidebar() {
    const [activeId, setActiveId] = useState("dashboard");
    return (
-      <div className="min-w-61 bg-foreground flex-col flex py-6 items-center border border-border">
+      <div className="min-w-61 bg-foreground flex-col flex py-6 items-center ">
          <h1 className="font-extrabold text-xl text-black mb-8">
             <span className="text-primary">Dash</span>Stack
          </h1>

@@ -1,11 +1,11 @@
 import { AlignJustify, ChevronDown } from "lucide-react";
-import SearchInput from "../shared/SearchInput";
+import SearchInput from "@/components/shared/SearchInput";
 import Image from "next/image";
-import { DownCircleOutlined, DownOutlined } from "@ant-design/icons";
+import { DownCircleOutlined } from "@ant-design/icons";
 
 function DashboardHeader() {
    return (
-      <div className="w-full flex bg-foreground h-17 px-8 items-center justify-between text-text -translate-x-[1px] border-b border-border">
+      <div className="w-full flex bg-foreground h-17 px-8 items-center justify-between text-text  ">
          <div className="left flex items-center gap-8">
             <AlignJustify width={24} height={25} />
             <SearchInput />
