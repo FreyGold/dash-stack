@@ -6,33 +6,33 @@ import { themeColors } from "../constants/COLORS";
 import ReactQueryProvider from "./ReactQueryProvider";
 
 type Props = {
-  children: ReactNode;
+   children: ReactNode;
 };
 
 const SetCSSVariables = () => {
-  const { IsDark } = useDarkLight();
+   const { IsDark } = useDarkLight();
 
-  useEffect(() => {
-    const root = document.documentElement;
-    const theme = IsDark ? themeColors.darkTheme : themeColors.lightTheme;
+   useEffect(() => {
+      const root = document.documentElement;
+      const theme = IsDark ? themeColors.darkTheme : themeColors.lightTheme;
 
-    Object.entries(theme).forEach(([key, value]) => {
-      root.style.setProperty(`--c-${key}`, value);
-    });
-  }, [IsDark]);
+      Object.entries(theme).forEach(([key, value]) => {
+         root.style.setProperty(`--c-${key}`, value);
+      });
+   }, [IsDark]);
 
-  return null;
+   return null;
 };
 
 const UiProvider: React.FC<Props> = ({ children }) => {
-  return (
-    <DarkLightProvider>
-      <SetCSSVariables />
-      <AntDProvider>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
-      </AntDProvider>
-    </DarkLightProvider>
-  );
+   return (
+      <DarkLightProvider>
+         <SetCSSVariables />
+         <AntDProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+         </AntDProvider>
+      </DarkLightProvider>
+   );
 };
 
 export default UiProvider;
