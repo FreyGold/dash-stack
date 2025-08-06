@@ -4,8 +4,8 @@ import {
    dashboardItems,
    pagesItems,
    settingsItems,
-} from "../../../services/constants/MENU_ITEMS";
-import SidebarItem from "./dashboardSidebarComponents/SidebarItem";
+} from "../../../../services/constants/MENU_ITEMS";
+import SidebarItem from "./SidebarItem";
 
 function DashboardSidebar() {
    const [activeId, setActiveId] = useState("dashboard");

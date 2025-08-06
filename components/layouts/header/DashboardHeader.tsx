@@ -2,12 +2,26 @@ import { AlignJustify, ChevronDown } from "lucide-react";
 import SearchInput from "@/components/shared/SearchInput";
 import Image from "next/image";
 import { DownCircleOutlined } from "@ant-design/icons";
+import { Dispatch, SetStateAction } from "react";
 
-function DashboardHeader() {
+function DashboardHeader({
+   setIsOpen,
+   isOpen,
+}: {
+   setIsOpen: Dispatch<SetStateAction<boolean>>;
+   isOpen: boolean;
+}) {
    return (
       <div className="w-full flex bg-foreground h-17 px-8 items-center justify-between text-text  ">
          <div className="left flex items-center gap-8">
-            <AlignJustify width={24} height={25} />
+            {isOpen && (
+               <AlignJustify
+                  width={24}
+                  height={25}
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="cursor-pointer"
+               />
+            )}
             <SearchInput />
          </div>
          <div className="right flex items-center w-96 gap-6 justify-between">

@@ -1,38 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: var(--c-primary);
-  --color-background: var(--c-background);
-  --color-foreground: var(--c-foreground);
-  --color-background-dark: var(--c-background-dark);
-  --color-text: var(--c-text);
-  --color-border: var(--c-border);
-  --color-success: var(--c-success);
-  --color-warning: var(--c-warning);
-  --color-danger: var(--c-danger);
-  --color-danger-light: var(--c-danger-light);
-  --color-success-opacity: var(--c-success-opacity);
-  --color-warning-opacity: var(--c-warning-opacity);
-  --color-danger-opacity: var(--c-danger-opacity);
-  --color-danger-light-opacity: var(--c-danger-light-opacity);
-  --color-purple: var(--c-purple);
-  --color-purple-opacity: var(--c-purple-opacity);
+   --color-primary: var(--c-primary);
+   --color-background: var(--c-background);
+   --color-foreground: var(--c-foreground);
+   --color-background-dark: var(--c-background-dark);
+   --color-text: var(--c-text);
+   --color-border: var(--c-border);
+   --color-success: var(--c-success);
+   --color-warning: var(--c-warning);
+   --color-danger: var(--c-danger);
+   --color-danger-light: var(--c-danger-light);
+   --color-success-opacity: var(--c-success-opacity);
+   --color-warning-opacity: var(--c-warning-opacity);
+   --color-danger-opacity: var(--c-danger-opacity);
+   --color-danger-light-opacity: var(--c-danger-light-opacity);
+   --color-purple: var(--c-purple);
+   --color-purple-opacity: var(--c-purple-opacity);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-primary);
-  border-radius: 16px;
+   outline: 2px solid var(--color-primary);
+   border-radius: 16px;
 }
 
 .tooltip-box::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -6px;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #5E77FF;
+   content: "";
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   bottom: -6px;
+   width: 0;
+   height: 0;
+   border-left: 6px solid transparent;
+   border-right: 6px solid transparent;
+   border-top: 6px solid #5e77ff;
+}
+
+.ant-drawer-header {
+   display: none !important;
+}
+.ant-drawer-body {
+   margin: 0 !important;
+   padding: 0 !important;
+   overflow: hidden !important;
+}
+.ant-drawer-content {
+   overflow: hidden !important;
+   box-shadow: "0px";
 }
