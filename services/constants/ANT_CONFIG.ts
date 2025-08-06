@@ -7,11 +7,23 @@ export const lightConfig: ThemeConfig = {
   token: {
     colorPrimary: themeColors.lightTheme.primary,
   },
+  components: {
+    Table: {
+      headerBg: themeColors.lightTheme["bg-table-header"],
+      headerBorderRadius: 12,
+    },
+  },
 };
 
 export const darkConfig: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
   token: {
     colorPrimary: themeColors.darkTheme.primary,
+  },
+  components: {
+    Table: {
+      headerBg: themeColors.darkTheme["bg-table-header"],
+      headerBorderRadius: 12,
+    },
   },
 };

@@ -16,6 +16,10 @@ export const themeColors = {
     "warning-opacity": "#FEC53D33",
     "danger-opacity": "#F93C6533",
     "success-opacity": "#00B69B33",
+    delivered: "#00B69B",
+    pending: "#FCBE2D",
+    rejected: "#FD5454",
+    "bg-table-header": "#F1F4F9",
   },
   darkTheme: {
     primary: "#4880FF",
@@ -33,5 +37,9 @@ export const themeColors = {
     "success-opacity": "#00B69B33",
     purple: "#8280FF",
     "purple-opacity": "#8280FF33",
+    delivered: "#00B69B",
+    pending: "#FCBE2D",
+    rejected: "#FD5454",
+    "bg-table-header": "#F1F4F9",
   },
 };

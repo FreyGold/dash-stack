@@ -1,5 +1,10 @@
+import DealsDetails from "./dealsDetails/DealsDetails";
 function MainHomePage() {
-   return <div>Home</div>;
+  return (
+    <div>
+      <DealsDetails />
+    </div>
+  );
 }
 
 export default MainHomePage;

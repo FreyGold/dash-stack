@@ -18,6 +18,10 @@
   --color-danger-light-opacity: var(--c-danger-light-opacity);
   --color-purple: var(--c-purple);
   --color-purple-opacity: var(--c-purple-opacity);
+  --color-delivered: var(--c-delivered);
+  --color-pending: var(--c-pending);
+  --color-rejected: var(--c-rejected);
+  --color-bg-table-header: var(--c-bg-table-header);
 }
 
 :focus-visible {
