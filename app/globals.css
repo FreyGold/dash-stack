@@ -7,23 +7,14 @@
    --color-background-dark: var(--c-background-dark);
    --color-text: var(--c-text);
    --color-border: var(--c-border);
-   --font-nunito: var(--font-nunito-sans);
-}
-
-@media (prefers-color-scheme: dark) {
-   :root {
-      --background: #0a0a0a;
-      --foreground: #ededed;
-   }
-}
-.scrollbar-hide {
-   -ms-overflow-style: none;
-   scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-   display: none;
-}
-body {
-   background: var(--background);
-   color: var(--foreground);
+   --color-success: var(--c-success);
+   --color-warning: var(--c-warning);
+   --color-danger: var(--c-danger);
+   --color-danger-light: var(--c-danger-light);
+   --color-success-opacity: var(--c-success-opacity);
+   --color-warning-opacity: var(--c-warning-opacity);
+   --color-danger-opacity: var(--c-danger-opacity);
+   --color-danger-light-opacity: var(--c-danger-light-opacity);
+   --color-purple: var(--c-purple);
+   --color-purple-opacity: var(--c-purple-opacity);
 }
