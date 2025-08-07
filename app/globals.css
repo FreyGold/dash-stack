@@ -36,16 +36,3 @@
    border-right: 6px solid transparent;
    border-top: 6px solid #5e77ff;
 }
-
-.ant-drawer-header {
-   display: none !important;
-}
-.ant-drawer-body {
-   margin: 0 !important;
-   padding: 0 !important;
-   overflow: hidden !important;
-}
-.ant-drawer-content {
-   overflow: hidden !important;
-   box-shadow: "0px";
-}
