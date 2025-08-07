@@ -1,7 +1,11 @@
+import DealsDetails from "./dealsDetails/DealsDetails";
 function MainHomePage() {
-   return (
-      <div className="flex w-full h-full justify-center items-center">Home</div>
-   );
+  return (
+    <div>
+      <DealsDetails />
+    </div>
+  );
+
 }
 
 export default MainHomePage;
