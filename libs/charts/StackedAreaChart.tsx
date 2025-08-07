@@ -127,7 +127,7 @@ const StackedChartComponent = ({
         </AreaChart>
       </ResponsiveContainer>
       <div className="flex justify-center mt-10 gap-15">
-        <span className="flex items-center">
+        <span className="flex gap-2.5 items-center">
           <span
             style={{ backgroundColor: colorOne }}
             className="w-3 h-3 rounded-full me-2"
@@ -137,7 +137,7 @@ const StackedChartComponent = ({
         <span className="flex items-center">
           <span
             style={{ backgroundColor: colorTwo }}
-            className="w-3 h-3  rounded-full me-2"
+            className="w-3 h-3 gap-2.5 rounded-full me-2"
           ></span>
           Profit
         </span>
