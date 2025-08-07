@@ -13,7 +13,7 @@ function SidebarMinimalItem({
    console.log(isActive);
    return (
       <div
-         className={`w-full min-h-13 flex items-center justify-center relative ${
+         className={`w-full cursor-pointer min-h-13 flex items-center justify-center relative ${
             isActive ? "text-primary" : ""
          }`}
          onClick={onClick}>

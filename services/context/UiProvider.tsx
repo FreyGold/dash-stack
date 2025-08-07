@@ -4,6 +4,7 @@ import AntDProvider from "./AntDProvider";
 import { DarkLightProvider, useDarkLight } from "./DarkLightProvider";
 import { themeColors } from "../constants/COLORS";
 import ReactQueryProvider from "./ReactQueryProvider";
+import { SidebarProvider } from "./SidebarContext";
 
 type Props = {
    children: ReactNode;
@@ -29,7 +30,9 @@ const UiProvider: React.FC<Props> = ({ children }) => {
       <DarkLightProvider>
          <SetCSSVariables />
          <AntDProvider>
-            <ReactQueryProvider>{children}</ReactQueryProvider>
+            <ReactQueryProvider>
+               <SidebarProvider>{children}</SidebarProvider>
+            </ReactQueryProvider>
          </AntDProvider>
       </DarkLightProvider>
    );
