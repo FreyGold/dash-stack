@@ -1,10 +1,10 @@
 "use client";
 import { TrendDownIcon, TrendUpIcon } from "@phosphor-icons/react";
-import Image from "next/image";
+import { JSX } from "react";
 interface TotalCardProps {
    title: string;
    value: number;
-   icon: string;
+   icon: JSX.Element;
    iconColor: string;
    trendIcon: boolean;
    trendColor: string;
@@ -22,23 +22,16 @@ const TotalCard = ({
    trendValue,
 }: TotalCardProps) => {
    return (
-      <div className="bg-foreground flex h-40 flex-col justify-between rounded-[14px] w-66 p-3">
+      <div className="bg-foreground flex h-40 flex-col justify-between rounded-2xl w-66 p-3">
          <div className="flex relative justify-between">
             <div>
-               <h3 className="opacity-70 text-[16px] font-semibold ">
-                  {title}
-               </h3>
+               <h3 className="opacity-70 font-semibold ">{title}</h3>
                <p className=" font-bold text-3xl mt-2.5 ">{value}</p>
             </div>
             <div
                className={`px-3.5 py-4 flex absolute top-0 right-3 items-center justify-center w-[60px]
               bg-${iconColor}  rounded-3xl  text-2xl`}>
-               <Image
-                  src={icon}
-                  sizes="32px"
-                  width={32}
-                  height={32}
-                  alt="group"></Image>
+               {icon}
             </div>
          </div>
          <p

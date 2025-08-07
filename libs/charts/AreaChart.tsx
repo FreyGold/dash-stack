@@ -25,7 +25,7 @@ const CustomTooltip = ({ active, payload, color }: any) => {
       return (
          <div className="relative">
             <div
-               className=" text-white font-bold p-2 rounded"
+               className="text-text font-bold p-2 rounded"
                style={{ backgroundColor: color }}>
                {`${value}`}
                {/* <div className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-[#5E77FF]"></div> */}
