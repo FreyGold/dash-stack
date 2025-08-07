@@ -6,6 +6,7 @@ export const lightConfig: ThemeConfig = {
   algorithm: theme.defaultAlgorithm,
   token: {
     colorPrimary: themeColors.lightTheme.primary,
+    colorBgMask: "transparent",
   },
   components: {
     Table: {
@@ -19,6 +20,7 @@ export const darkConfig: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
   token: {
     colorPrimary: themeColors.darkTheme.primary,
+    colorBgMask: "transparent",
   },
   components: {
     Table: {

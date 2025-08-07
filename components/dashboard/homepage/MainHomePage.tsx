@@ -5,6 +5,7 @@ function MainHomePage() {
       <DealsDetails />
     </div>
   );
+
 }
 
 export default MainHomePage;
