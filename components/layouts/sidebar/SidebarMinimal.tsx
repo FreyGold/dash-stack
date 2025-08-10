@@ -6,9 +6,9 @@ import {
    settingsItems,
 } from "@/services/constants";
 import SidebarMinimalItem from "./dashboardSidebarComponents/SidebarMinimalItem";
-import { Dispatch, SetStateAction, useState } from "react";
-import { ListIcon } from "@phosphor-icons/react";
+import { Dispatch, SetStateAction } from "react";
 import { AlignJustify } from "lucide-react";
+import { useSidebar } from "@/services/context/SidebarContext";
 
 function SidebarMinimal({
    isOpen,
@@ -17,16 +17,18 @@ function SidebarMinimal({
    isOpen: boolean;
    setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-   const [activeId, setActiveId] = useState("dashboard");
+   const { activeId, setActiveId } = useSidebar();
 
    return (
-      <div className="min-w-21 flex-col flex py-6 items-center">
-         <AlignJustify
-            width={24}
-            height={25}
-            className="cursor-pointer mb-4 bottom-0.5 relative"
-            onClick={() => setIsOpen(!isOpen)}
-         />
+      <div className="min-w-21 flex-col flex py-6 items-center h-full">
+         <div>
+            <AlignJustify
+               width={24}
+               height={25}
+               className="cursor-pointer mb-6 bottom-0.5 relative "
+               onClick={() => setIsOpen(!isOpen)}
+            />
+         </div>
 
          {dashboardItems.map((item) => (
             <SidebarMinimalItem

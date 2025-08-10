@@ -1,4 +1,4 @@
-import { ReactNode, SetStateAction } from "react";
+import { ReactNode } from "react";
 
 function SidebarItem({
    icon,
@@ -17,7 +17,7 @@ function SidebarItem({
          className="w-full flex relative justify-start min-h-13 text-foreground px-6 cursor-pointer"
          onClick={onClick}>
          {isActive && (
-            <div className="absolute left-0 w-2 border-r rounded-full h-full bg-primary rotate-180 -translate-x-[50%]"></div>
+            <div className="absolute ltr:left-0 rtl:right-0 rtl:w-30 w-2 border-r rounded-full h-full bg-primary rotate-180 ltr:-translate-x-[50%] rtl:translate-x-[50%]"></div>
          )}
          <div
             className={

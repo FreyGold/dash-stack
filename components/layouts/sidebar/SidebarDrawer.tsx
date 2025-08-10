@@ -1,6 +1,6 @@
 "use client";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { Button, Drawer } from "antd";
+import { Drawer } from "antd";
 import DashboardSidebar from "./dashboardSidebarComponents/DashboardSidebar";
 
 const SidebarDrawer = ({
@@ -28,7 +28,12 @@ const SidebarDrawer = ({
          zIndex={1000}
          width={240}
          styles={{
-            wrapper: { backgroundColor: "transparent", boxShadow: "none" },
+            wrapper: {
+               backgroundColor: "transparent",
+               boxShadow: "none",
+            },
+            body: { padding: 0 },
+            header: { padding: 0, display: "none" },
          }}>
          <DashboardSidebar />
       </Drawer>

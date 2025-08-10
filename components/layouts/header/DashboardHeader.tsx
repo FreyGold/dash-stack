@@ -12,7 +12,7 @@ function DashboardHeader({
    isOpen: boolean;
 }) {
    return (
-      <div className="w-full flex bg-foreground h-17 px-8 items-center justify-between text-text  ">
+      <div className="w-full flex bg-foreground px-8 items-center justify-between text-text p-2 ">
          <div className="left flex items-center gap-8">
             {isOpen && (
                <AlignJustify
@@ -26,7 +26,7 @@ function DashboardHeader({
          </div>
          <div className="right flex items-center w-96 gap-6 justify-between">
             <Image
-               src={"/Icon.png"}
+               src={"/Icon.svg"}
                width={29}
                height={30}
                alt={"Notification"}></Image>

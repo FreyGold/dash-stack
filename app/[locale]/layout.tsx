@@ -29,7 +29,7 @@ export default async function RootLayout({
   }
   console.log(locale);
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={locale === "ar" ? "ltr" : "rtl"}>
       <body className={`${nunitoSans.variable} antialiased `}>
         <UiProvider>
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
