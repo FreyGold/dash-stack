@@ -1,9 +1,9 @@
 "use client";
 import { TrendDownIcon, TrendUpIcon } from "@phosphor-icons/react";
-import group from "../../../../assets/Group.svg";
-import order from "../../../../assets/order.svg";
-import pending from "../../../../assets/pending.svg";
-import sales from "../../../../assets/sales.svg";
+import group from "@/assets/Group.svg";
+import order from "@/assets/order.svg";
+import pending from "@/assets/pending.svg";
+import sales from "@/assets/sales.svg";
 import Image from "next/image";
 interface TotalCardProps {
    title: string;
@@ -16,6 +16,7 @@ interface TotalCardProps {
    trendValue: number;
 }
 const icons = [group, order, pending, sales];
+
 const TotalCard = ({
    title,
    value,
@@ -27,7 +28,7 @@ const TotalCard = ({
    trendValue,
 }: TotalCardProps) => {
    return (
-      <div className="bg-foreground flex h-40 flex-col justify-between rounded-2xl  p-4">
+      <div className="bg-foreground flex h-40 flex-col justify-between rounded-2xl  p-4 w-full">
          <div className="flex gap-18 relative justify-between">
             <div>
                <h3 className="opacity-70 text-base font-semibold ">{title}</h3>
@@ -41,7 +42,7 @@ const TotalCard = ({
                   sizes="32px"
                   width={32}
                   height={32}
-                  alt="group"></Image>
+                  alt={`${icon}`}></Image>
             </div>
          </div>
          <p
