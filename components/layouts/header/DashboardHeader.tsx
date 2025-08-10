@@ -3,6 +3,7 @@ import SearchInput from "@/components/shared/SearchInput";
 import Image from "next/image";
 import { DownCircleOutlined } from "@ant-design/icons";
 import { Dispatch, SetStateAction } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function DashboardHeader({
    setIsOpen,
@@ -30,16 +31,7 @@ function DashboardHeader({
                width={29}
                height={30}
                alt={"Notification"}></Image>
-            <div className="language flex items-center h-8">
-               <Image
-                  src={"/7260fbd7cccd7993400c3b1165f33370bf034acd.png"}
-                  width={40}
-                  height={27}
-                  alt={"flag"}
-                  className="mr-3 rounded-sm"></Image>
-               <h3 className="text-sm mr-1">English</h3>
-               <ChevronDown width={16} height={16} />
-            </div>
+            <LanguageSwitcher />
             <div className="profile flex gap-4  items-center">
                <Image
                   src={"/95bca3ecaf6d28d115834f85b6163b6e58e91c7c.png"}
