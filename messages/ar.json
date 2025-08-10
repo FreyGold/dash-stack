@@ -1,6 +1,40 @@
 {
-  "HomePage": {
-    "title": "اهلا",
-    "about": "Go to the about page"
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "sections": {
+      "totalCard": {
+        "title": "إجمالي المستخدمين",
+        "value": 40689,
+        "icon": 0,
+        "iconColor": "success",
+        "trend": "زيادة عن أمس",
+        "isTrending": true,
+        "trendColor": "success",
+        "trendValue": 8.5
+      },
+      "salesDetails": {
+        "title": "تفاصيل المبيعات"
+      },
+      "dealsDetails": {
+        "title": "تفاصيل الصفقات"
+      },
+      "revenue": {
+        "title": "الإيرادات"
+      }
+    },
+    "months": [
+      "يناير",
+      "فبراير",
+      "مارس",
+      "أبريل",
+      "مايو",
+      "يونيو",
+      "يوليو",
+      "أغسطس",
+      "سبتمبر",
+      "أكتوبر",
+      "نوفمبر",
+      "ديسمبر"
+    ]
   }
 }

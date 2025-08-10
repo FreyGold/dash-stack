@@ -12,6 +12,7 @@ import { Select } from "antd";
 import { useState } from "react";
 import { useChartColors } from "./colors";
 import { AreaChartDataType } from "./types";
+import { useTranslations } from "next-intl";
 
 const { Option } = Select;
 
@@ -43,17 +44,21 @@ const CustomTooltip = ({ active, payload, color }: TooltipProps) => {
 };
 
 const AreaChartComponent = ({
-   chartData,
-   colorIndex = 0,
-}: {
-   chartData: Record<string, AreaChartDataType[]>;
-   colorIndex?: number;
-}) => {
-   const [selectedMonth, setSelectedMonth] = useState("October");
 
-   const handleMonthChange = (value: string) => {
-      setSelectedMonth(value);
-   };
+  title,
+  chartData,
+  colorIndex = 0,
+}: {
+  title: string;
+  chartData: Record<string, AreaChartDataType[]>;
+  colorIndex?: number;
+}) => {
+  const [selectedMonth, setSelectedMonth] = useState("October");
+  const t = useTranslations("dashboard");
+  const months = t.raw("months");
+  const handleMonthChange = (value: string) => {
+    setSelectedMonth(value);
+  };
 
    const { getColorByIndex } = useChartColors();
 
@@ -66,22 +71,23 @@ const AreaChartComponent = ({
    return (
       <div className=" px-6 py-7 rounded-lg shadow bg-foreground w-full">
          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold">Sales Details</h2>
-            <Select
-               defaultValue={selectedMonth}
-               onChange={handleMonthChange}
-               className="w-26.5 opacity-75">
-               <Option className=" opacity-75" value="October">
-                  October
-               </Option>
-               <Option className=" opacity-75" value="September">
-                  September
-               </Option>
-               <Option className=" opacity-75" value="August">
-                  August
-               </Option>
-            </Select>
-         </div>
+        <h2 className="text-2xl font-bold">{title}</h2>
+        <Select
+          defaultValue={selectedMonth}
+          onChange={handleMonthChange}
+          className="w-26.5 opacity-75"
+        >
+          <Option className=" opacity-75" value="October">
+            {months[9]}
+          </Option>
+          <Option className=" opacity-75" value="September">
+            {months[8]}
+          </Option>
+          <Option className=" opacity-75" value="August">
+            {months[7]}
+          </Option>
+        </Select>
+      </div>
          <ResponsiveContainer className="mt-12.5" width="100%" height={330}>
             <AreaChart
                className="area-chart focus-visible:outline-none"
@@ -130,8 +136,7 @@ const AreaChartComponent = ({
                />
             </AreaChart>
          </ResponsiveContainer>
-      </div>
-   );
+ 
 };
 
 export default AreaChartComponent;
