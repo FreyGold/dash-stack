@@ -28,10 +28,12 @@ const SidebarDrawer = ({
          zIndex={1000}
          width={240}
          styles={{
-            wrapper: { backgroundColor: "transparent", boxShadow: "none" },
-            body: { padding: 0, overflow: "hidden" },
+            wrapper: {
+               backgroundColor: "transparent",
+               boxShadow: "none",
+            },
+            body: { padding: 0 },
             header: { padding: 0, display: "none" },
-            content: { overflow: "hidden" },
          }}>
          <DashboardSidebar />
       </Drawer>

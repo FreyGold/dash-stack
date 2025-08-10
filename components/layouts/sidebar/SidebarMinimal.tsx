@@ -20,13 +20,15 @@ function SidebarMinimal({
    const { activeId, setActiveId } = useSidebar();
 
    return (
-      <div className="min-w-21 flex-col flex py-6 items-center">
-         <AlignJustify
-            width={24}
-            height={25}
-            className="cursor-pointer mb-6 bottom-0.5 relative"
-            onClick={() => setIsOpen(!isOpen)}
-         />
+      <div className="min-w-21 flex-col flex py-6 items-center h-full">
+         <div>
+            <AlignJustify
+               width={24}
+               height={25}
+               className="cursor-pointer mb-6 bottom-0.5 relative "
+               onClick={() => setIsOpen(!isOpen)}
+            />
+         </div>
 
          {dashboardItems.map((item) => (
             <SidebarMinimalItem

@@ -2,6 +2,7 @@ import DealsDetails from "./dealsDetails/DealsDetails";
 import AreaChartComponent from "./../../../libs/charts/AreaChart";
 import { AreaChartData, StackedChartData } from "@/libs/charts/data";
 import StackedChartComponent from "@/libs/charts/StackedAreaChart";
+
 import TotalCard from "./totalCard/TotalCard";
 import { useTranslations } from "next-intl";
 

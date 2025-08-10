@@ -10,8 +10,8 @@ import { useSidebar } from "@/services/context/SidebarContext";
 function DashboardSidebar() {
    const { activeId, setActiveId } = useSidebar();
    return (
-      <div className="min-w-61 bg-foreground flex-col flex py-6 items-center ">
-         <h1 className="font-extrabold text-xl text-black mb-8">
+      <div className="min-w-61 bg-foreground flex-col flex py-6 items-center">
+         <h1 className="font-extrabold text-xl text-text mb-8">
             <span className="text-primary">Dash</span>Stack
          </h1>
          {dashboardItems.map((item) => (
