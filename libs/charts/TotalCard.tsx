@@ -34,9 +34,9 @@ const TotalCard = ({
                <h3 className="opacity-70 text-base font-semibold ">{title}</h3>
                <p className=" font-bold text-3xl mt-2.5 ">{value}</p>
             </div>
-            <div className="h-1 "></div>
+            <div className="h-1"></div>
             <div
-               className={`px-3.5 py-4 flex absolute bg-purple-opacity top-0 right-0 items-center justify-center w-[60px] bg-${iconColor}  rounded-3xl  text-2xl`}>
+               className={`px-3.5 py-4 flex absolute bg-purple-opacity top-0 right-0 items-center justify-center w-[60px] bg-${iconColor} rounded-3xl  text-2xl`}>
                <Image
                   src={icons[icon]}
                   sizes="32px"
