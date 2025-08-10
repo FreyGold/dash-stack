@@ -1,5 +1,5 @@
 import DealsDetails from "./dealsDetails/DealsDetails";
-import AreaChartComponent from "./../../../libs/charts/AreaChart";
+import AreaChartComponent from "@/libs/charts/AreaChart";
 import { AreaChartData, StackedChartData } from "@/libs/charts/data";
 import StackedChartComponent from "@/libs/charts/StackedAreaChart";
 

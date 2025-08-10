@@ -24,6 +24,7 @@ export default function LanguageSwitcher() {
    const handleChange = (value: string) => {
       document.cookie = `locale=${value}; path=/`;
       setSelected(value);
+      router.push(`/${value}/dashboard`);
       router.refresh();
    };
 

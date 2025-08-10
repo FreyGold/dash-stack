@@ -25,7 +25,7 @@ function DashboardSidebar() {
          ))}
          <div className="border-background border/80 border w-full my-3"></div>
          <div className="w-full mt-1 mb-3">
-            <h3 className="pl-12 text-black/60 text-xs tracking-wide">PAGES</h3>
+            <h3 className="ps-12 text-text/60 text-xs tracking-wide">PAGES</h3>
          </div>
          {pagesItems.map((item) => (
             <SidebarItem
