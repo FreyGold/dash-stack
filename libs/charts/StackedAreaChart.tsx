@@ -12,6 +12,7 @@ import { Select } from "antd";
 import { useState } from "react";
 import { useChartColors } from "./colors";
 import { StackedDataType } from "./types";
+import { useTranslations } from "next-intl";
 
 const { Option } = Select;
 
@@ -40,17 +41,21 @@ const CustomTooltip = ({ active, payload }: TooltipProps) => {
   return null;
 };
 interface IProps {
+  title: string;
   chartData: Record<string, StackedDataType[]>;
   colorIndexOne?: number;
   colorIndexTwo?: number;
 }
 const StackedChartComponent = ({
   chartData,
+  title,
   colorIndexOne = 2,
   colorIndexTwo = 1,
 }: IProps) => {
   const [selectedMonth, setSelectedMonth] = useState("October");
   const { getColorByIndex } = useChartColors();
+  const t = useTranslations("dashboard");
+  const months = t.raw("months");
   const colorOne = getColorByIndex(colorIndexOne);
   const colorTwo = getColorByIndex(colorIndexTwo);
   const handleMonthChange = (value: string) => {
@@ -64,15 +69,15 @@ const StackedChartComponent = ({
   return (
     <div className="px-8 pt-9 pb-8 mt-3 rounded-lg shadow bg-foreground w-full">
       <div className="flex justify-between items-center ">
-        <h2 className="text-2xl font-bold">Revenue</h2>
+        <h2 className="text-2xl font-bold">{title}</h2>
         <Select
           defaultValue={selectedMonth}
           onChange={handleMonthChange}
           className="w-26.5 opacity-75"
         >
-          <Option value="October">October</Option>
-          <Option value="September">September</Option>
-          <Option value="August">August</Option>
+          <Option value="October">{months[9]}</Option>
+          <Option value="September">{months[8]}</Option>
+          <Option value="August">{months[7]}</Option>
         </Select>
       </div>
       <ResponsiveContainer className="mt-12.5" width="100%" height={330}>

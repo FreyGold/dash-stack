@@ -2,6 +2,7 @@
 import { Select } from "antd";
 import { useState } from "react";
 import { Table } from "antd";
+import { useTranslations } from "next-intl";
 
 const { Option } = Select;
 type DataType = {
@@ -151,9 +152,10 @@ const columns = [
   },
 ];
 
-const DealsDetails = () => {
+const DealsDetails = ({ title }: { title: string }) => {
   const [selectedMonth, setSelectedMonth] = useState("October");
-
+  const t = useTranslations("dashboard");
+  const months = t.raw("months");
   const handleMonthChange = (value: string) => {
     setSelectedMonth(value);
   };
@@ -161,20 +163,20 @@ const DealsDetails = () => {
   return (
     <div className="px-6 py-7 rounded-lg shadow bg-foreground w-full">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">Deals Details</h2>
+        <h2 className="text-2xl font-bold">{title}</h2>
         <Select
           defaultValue={selectedMonth}
           onChange={handleMonthChange}
           className="w-26.5 opacity-75"
         >
           <Option className=" opacity-75" value="October">
-            October
+            {months[9]}
           </Option>
           <Option className=" opacity-75" value="September">
-            September
+            {months[8]}
           </Option>
           <Option className=" opacity-75" value="August">
-            August
+            {months[7]}
           </Option>
         </Select>
       </div>
