@@ -22,8 +22,8 @@ const TotalCard = ({
    trendValue,
 }: TotalCardProps) => {
    return (
-      <div className="bg-foreground flex h-40 flex-col justify-between rounded-2xl w-66 p-3">
-         <div className="flex relative justify-between">
+      <div className="bg-foreground flex flex-col justify-between rounded-2xl w-full p-4">
+         <div className="flex relative justify-between mb-7">
             <div>
                <h3 className="opacity-70 font-semibold ">{title}</h3>
                <p className=" font-bold text-3xl mt-2.5 ">{value}</p>

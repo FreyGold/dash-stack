@@ -1,11 +1,12 @@
+import AreaChartComponent from "@/libs/charts/AreaChart";
 import TotalCard from "@/libs/charts/TotalCard";
 import { GroupOutlined } from "@ant-design/icons";
 
 function MainHomePage() {
    return (
-      <div className="flex w-full h-full p-8 gap-6 bg-background flex-col">
+      <main className="flex w-full h-full p-8 gap-7 bg-background flex-col">
          <h1 className="font-bold text-4xl tracking-tight">Dashboard</h1>
-         <div className="gap-8 flex w-full">
+         <section className="gap-8 flex w-full">
             <TotalCard
                title="Total User"
                value={40689}
@@ -46,8 +47,17 @@ function MainHomePage() {
                trendColor="success"
                trendValue={8.5}
             />
-         </div>
-      </div>
+         </section>
+         {/* <section className="mt-9">
+            <AreaChartComponent chartData={AreaChartData} />
+         </section>
+         <section className="mt-9">
+            <DealsDetails />
+         </section>
+         <section className="mt-9">
+            <StackedChartComponent chartData={StackedChartData} /> */}
+         {/* </section> */}
+      </main>
    );
 }
 
