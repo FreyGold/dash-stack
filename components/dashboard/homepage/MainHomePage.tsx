@@ -12,9 +12,9 @@ function MainHomePage() {
    const totalCard = t.raw("sections.totalCard");
 
    return (
-      <main className="mx-auto px-4 py-8 container">
-         <h1 className="text-3xl font-bold pb-6">{t("title")}</h1>
-         <section className="flex justify-between gap-8">
+      <main className="flex w-full h-full p-8 gap-7 bg-background flex-col">
+         <h1 className="font-bold text-4xl tracking-tight">{t("title")}</h1>
+         <section className="gap-8 flex w-full">
             <TotalCard
                title={totalCard.title}
                value={totalCard.value}

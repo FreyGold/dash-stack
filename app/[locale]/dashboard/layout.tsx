@@ -8,7 +8,7 @@ import { useState } from "react";
 function Layout({ children }: { children: React.ReactNode }) {
    const [isOpen, setIsOpen] = useState(true);
    return (
-      <div className="w-screen h-screen flex font-nunito overflow-scroll ">
+      <div className="w-screen h-screen flex font-nunito overflow-scroll overflow-x-hidden">
          {isOpen && <DashboardSidebar />}
 
          {/* {isOpen && <div className="min-w-60"></div>} */}

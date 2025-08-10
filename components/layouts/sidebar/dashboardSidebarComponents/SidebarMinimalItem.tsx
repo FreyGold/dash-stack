@@ -18,7 +18,7 @@ function SidebarMinimalItem({
          }`}
          onClick={onClick}>
          {isActive && (
-            <div className="absolute left-0 w-1.5 border-r rounded-full h-[80%] bg-primary rotate-180 -translate-x-[50%]"></div>
+            <div className="absolute ltr:left-0 rtl:right-0 w-2 border-r rounded-full h-[80%] bg-primary rotate-180 rtl:rotate-0 rtl:translate-x-[50%] ltr:-translate-x-[50%]"></div>
          )}
          {icon}
       </div>
