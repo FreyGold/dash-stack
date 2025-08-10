@@ -6,6 +6,7 @@
    --color-foreground: var(--c-foreground);
    --color-background-dark: var(--c-background-dark);
    --color-text: var(--c-text);
+   --color-text-light: var(--c-text-light);
    --color-border: var(--c-border);
    --color-success: var(--c-success);
    --color-warning: var(--c-warning);
@@ -17,6 +18,10 @@
    --color-danger-light-opacity: var(--c-danger-light-opacity);
    --color-purple: var(--c-purple);
    --color-purple-opacity: var(--c-purple-opacity);
+   --color-delivered: var(--c-delivered);
+   --color-pending: var(--c-pending);
+   --color-rejected: var(--c-rejected);
+   --color-bg-table-header: var(--c-bg-table-header);
 }
 
 :focus-visible {

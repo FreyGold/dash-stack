@@ -1,7 +1,8 @@
-import AreaChartComponent from "@/libs/charts/AreaChart";
-import TotalCard from "@/libs/charts/TotalCard";
-import { GroupOutlined } from "@ant-design/icons";
-
+import DealsDetails from "./dealsDetails/DealsDetails";
+import AreaChartComponent from "./../../../libs/charts/AreaChart";
+import { AreaChartData, StackedChartData } from "@/libs/charts/data";
+import StackedChartComponent from "@/libs/charts/StackedAreaChart";
+import TotalCard from "./totalCard/TotalCard";
 function MainHomePage() {
    return (
       <main className="flex w-full h-full p-8 gap-7 bg-background flex-col">

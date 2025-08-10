@@ -11,24 +11,30 @@ import {
 import { Select } from "antd";
 import { useState } from "react";
 import { useChartColors } from "./colors";
+import { AreaChartDataType } from "./types";
 
 const { Option } = Select;
 
-type DataType = {
-   name: string;
-   value: number;
-};
-
-const CustomTooltip = ({ active, payload, color }: any) => {
+interface TooltipProps {
+   active?: boolean;
+   payload?: Array<{
+      value: number | string;
+      name?: string;
+      dataKey?: string;
+      payload?: AreaChartDataType;
+   }>;
+   label?: string | number;
+   color?: string;
+}
+const CustomTooltip = ({ active, payload, color }: TooltipProps) => {
    if (active && payload && payload.length) {
       const value = payload[0].value;
       return (
          <div className="relative">
             <div
-               className="text-text font-bold p-2 rounded"
+               className=" text-text-light font-bold p-2 rounded"
                style={{ backgroundColor: color }}>
                {`${value}`}
-               {/* <div className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-[#5E77FF]"></div> */}
             </div>
          </div>
       );
@@ -40,7 +46,7 @@ const AreaChartComponent = ({
    chartData,
    colorIndex = 0,
 }: {
-   chartData: Record<string, DataType[]>;
+   chartData: Record<string, AreaChartDataType[]>;
    colorIndex?: number;
 }) => {
    const [selectedMonth, setSelectedMonth] = useState("October");
@@ -49,7 +55,7 @@ const AreaChartComponent = ({
       setSelectedMonth(value);
    };
 
-   const { colors, getColorByIndex } = useChartColors();
+   const { getColorByIndex } = useChartColors();
 
    const color = getColorByIndex(colorIndex);
 
@@ -59,7 +65,7 @@ const AreaChartComponent = ({
 
    return (
       <div className=" px-6 py-7 rounded-lg shadow bg-foreground w-full">
-         <div className="flex justify-between items-center mb-4">
+         <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold">Sales Details</h2>
             <Select
                defaultValue={selectedMonth}
@@ -76,7 +82,7 @@ const AreaChartComponent = ({
                </Option>
             </Select>
          </div>
-         <ResponsiveContainer className="py-5" width="100%" height={330}>
+         <ResponsiveContainer className="mt-12.5" width="100%" height={330}>
             <AreaChart
                className="area-chart focus-visible:outline-none"
                data={chartData[selectedMonth]}>
