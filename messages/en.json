@@ -1,40 +1,107 @@
 {
-  "dashboard": {
-    "title": "Dashboard",
-    "sections": {
-      "totalCard": {
-        "title": "Total Users",
-        "value": 40689,
-        "icon": 0,
-        "iconColor": "success",
-        "trend": "Up from yesterday",
-        "isTrending": true,
-        "trendColor": "success",
-        "trendValue": 8.5
+   "dashboard": {
+      "title": "Dashboard",
+      "sections": {
+         "dashboardSidebar": [
+            {
+               "id": "dashboard",
+               "title": "Dashboard"
+            },
+            {
+               "id": "products",
+               "title": "Products"
+            },
+            {
+               "id": "favorites",
+               "title": "Favorites"
+            },
+            {
+               "id": "inbox",
+               "title": "Inbox"
+            },
+            {
+               "id": "order-lists",
+               "title": "Order Lists"
+            },
+            {
+               "id": "product-stock",
+               "title": "Product Stock"
+            },
+            {
+               "id": "pricing",
+               "title": "Pricing"
+            },
+            {
+               "id": "calendar",
+               "title": "Calendar"
+            },
+            {
+               "id": "todo",
+               "title": "To-Do"
+            },
+            {
+               "id": "contact",
+               "title": "Contact"
+            },
+            {
+               "id": "invoice",
+               "title": "Invoice"
+            },
+            {
+               "id": "ui-elements",
+               "title": "UI Elements"
+            },
+            {
+               "id": "team",
+               "title": "Team"
+            },
+            {
+               "id": "table",
+               "title": "Table"
+            },
+            {
+               "id": "settings",
+               "title": "Settings"
+            },
+            {
+               "id": "logout",
+               "title": "Logout"
+            }
+         ],
+         "totalCard": {
+            "title": "Total Users",
+            "value": 40689,
+            "icon": 0,
+            "iconColor": "success",
+            "trend": "Up from yesterday",
+            "isTrending": true,
+            "trendColor": "success",
+            "trendValue": 8.5
+         },
+         "salesDetails": {
+            "title": "Sales Details"
+         },
+         "dealsDetails": {
+            "title": "Deals Details"
+         },
+         "revenue": {
+            "title": "Revenue"
+         }
       },
-      "salesDetails": {
-        "title": "Sales Details"
-      },
-      "dealsDetails": {
-        "title": "Deals Details"
-      },
-      "revenue": {
-        "title": "Revenue"
-      }
-    },
-    "months": [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ]
-  }
+      "headerSearchPlaceholder": "Search for anything...",
+      "months": [
+         "January",
+         "February",
+         "March",
+         "April",
+         "May",
+         "June",
+         "July",
+         "August",
+         "September",
+         "October",
+         "November",
+         "December"
+      ]
+   }
 }

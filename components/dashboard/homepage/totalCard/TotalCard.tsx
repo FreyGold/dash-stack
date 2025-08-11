@@ -1,9 +1,9 @@
 "use client";
 import { TrendDownIcon, TrendUpIcon } from "@phosphor-icons/react";
-import group from "@/assets/Group.svg";
-import order from "@/assets/order.svg";
-import pending from "@/assets/pending.svg";
-import sales from "@/assets/sales.svg";
+import group from "../../../../assets/Group.svg";
+import order from "../../../../assets/order.svg";
+import pending from "../../../../assets/pending.svg";
+import sales from "../../../../assets/sales.svg";
 import Image from "next/image";
 interface TotalCardProps {
    title: string;
@@ -16,7 +16,6 @@ interface TotalCardProps {
    trendValue: number;
 }
 const icons = [group, order, pending, sales];
-
 const TotalCard = ({
    title,
    value,
@@ -28,21 +27,21 @@ const TotalCard = ({
    trendValue,
 }: TotalCardProps) => {
    return (
-      <div className="bg-foreground flex h-40 flex-col justify-between rounded-2xl  p-4 w-full">
+      <div className="bg-foreground flex h-40 flex-col justify-between rounded-2xl w-full p-4">
          <div className="flex gap-18 relative justify-between">
             <div>
                <h3 className="opacity-70 text-base font-semibold ">{title}</h3>
                <p className=" font-bold text-3xl mt-2.5 ">{value}</p>
             </div>
-            <div className="h-1"></div>
+            <div className="h-1 "></div>
             <div
-               className={`px-3.5 py-4 flex absolute bg-purple-opacity top-0 right-0 items-center justify-center w-[60px] bg-${iconColor} rounded-3xl  text-2xl`}>
+               className={`px-3.5 py-4 flex absolute bg-purple-opacity top-0 ltr:right-0 rtl:left-0 items-center justify-center w-[60px] bg-${iconColor}  rounded-3xl  text-2xl`}>
                <Image
                   src={icons[icon]}
                   sizes="32px"
                   width={32}
                   height={32}
-                  alt={`${icon}`}></Image>
+                  alt="group"></Image>
             </div>
          </div>
          <p

@@ -1,4 +1,4 @@
-import { AlignJustify, ChevronDown } from "lucide-react";
+import { AlignJustify } from "lucide-react";
 import SearchInput from "@/components/shared/SearchInput";
 import Image from "next/image";
 import { DownCircleOutlined } from "@ant-design/icons";

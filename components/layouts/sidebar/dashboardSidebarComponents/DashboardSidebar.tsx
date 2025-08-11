@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import {
    dashboardItems,
    pagesItems,
@@ -9,6 +10,7 @@ import { useSidebar } from "@/services/context/SidebarContext";
 
 function DashboardSidebar() {
    const { activeId, setActiveId } = useSidebar();
+   const t = useTranslations("dashboard");
    return (
       <div className="min-w-61 bg-foreground flex-col flex py-6 items-center">
          <h1 className="font-extrabold text-xl text-text mb-8">
@@ -18,20 +20,34 @@ function DashboardSidebar() {
             <SidebarItem
                key={item.id}
                icon={item.icon}
-               title={item.title}
+               title={
+                  t
+                     .raw("sections.dashboardSidebar")
+                     .find(
+                        (obj: { id: string; title: string }) =>
+                           obj.id === item.id
+                     )?.["title"]
+               }
                onClick={() => setActiveId(item.id)}
                isActive={item.id === activeId}
             />
          ))}
          <div className="border-background border/80 border w-full my-3"></div>
          <div className="w-full mt-1 mb-3">
-            <h3 className="pl-12 text-black/60 text-xs tracking-wide">PAGES</h3>
+            <h3 className="ps-12 text-text/60 text-xs tracking-wide">PAGES</h3>
          </div>
          {pagesItems.map((item) => (
             <SidebarItem
                key={item.id}
                icon={item.icon}
-               title={item.title}
+               title={
+                  t
+                     .raw("sections.dashboardSidebar")
+                     .find(
+                        (obj: { id: string; title: string }) =>
+                           obj.id === item.id
+                     )?.["title"]
+               }
                onClick={() => setActiveId(item.id)}
                isActive={item.id === activeId}
             />
@@ -42,7 +58,14 @@ function DashboardSidebar() {
             <SidebarItem
                key={item.id}
                icon={item.icon}
-               title={item.title}
+               title={
+                  t
+                     .raw("sections.dashboardSidebar")
+                     .find(
+                        (obj: { id: string; title: string }) =>
+                           obj.id === item.id
+                     )?.["title"]
+               }
                onClick={() => setActiveId(item.id)}
                isActive={item.id === activeId}
             />
