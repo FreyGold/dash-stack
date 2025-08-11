@@ -31,7 +31,7 @@ const slides: Slide[] = [
 ];
 const FeaturedSlider = () => {
   return (
-    <section className="bg-[url('/bgProducts.png')] bg-no-repeat bg-cover rounded-2xl bg-fixed">
+    <section className="bg-[url('/bgProducts.png')]  bg-repeat bg-cover rounded-2xl ">
       <Carousel>
         {slides.map((slide) => (
           <div key={slide.date} className="py-12.5 !flex items-center px-6 ">
