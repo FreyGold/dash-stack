@@ -47,3 +47,21 @@
    border-right: 6px solid transparent;
    border-top: 6px solid #5e77ff;
 }
+
+.tags .ant-select-selection-item {
+   background-color: var(--color-primary) !important;
+   color: var(--color-text-light);
+
+   .ant-select-selection-item-remove {
+      color: var(--color-text-light);
+   }
+}
+
+.bg-dots {
+   background-color: #fafafa;
+   background-image:
+      radial-gradient(#ccc 0.5px, transparent 0.5px),
+      radial-gradient(#ccc 0.5px, transparent 0.5px);
+   background-size: 10px 10px;
+   background-position: 0 0, 5px 5px;
+}

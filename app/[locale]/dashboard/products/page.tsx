@@ -5,7 +5,9 @@ function page() {
   return (
     <div>
       <FeaturedSlider />
-      <ProductSlider />
+      <div className="bg-amber-600 mt-10">
+        <ProductSlider />
+      </div>
     </div>
   );
 }
