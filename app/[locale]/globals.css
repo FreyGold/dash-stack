@@ -29,6 +29,12 @@
    border-radius: 16px;
 }
 
+.products {
+   background-image: url("../../public/bgProducts.png");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
 .tooltip-box::after {
    content: "";
    position: absolute;
