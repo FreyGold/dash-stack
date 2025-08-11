@@ -1,10 +1,9 @@
-import { AlignJustify, ChevronDown } from "lucide-react";
+import { AlignJustify } from "lucide-react";
 import SearchInput from "@/components/shared/SearchInput";
 import Image from "next/image";
 import { DownCircleOutlined } from "@ant-design/icons";
 import { Dispatch, SetStateAction } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { useTranslations } from "next-intl";
 
 function DashboardHeader({
    setIsOpen,
@@ -13,7 +12,6 @@ function DashboardHeader({
    setIsOpen: Dispatch<SetStateAction<boolean>>;
    isOpen: boolean;
 }) {
-   const dashboardHeader = useTranslations("dashboard");
    return (
       <div className="w-full flex bg-foreground px-8 items-center justify-between text-text p-2 ">
          <div className="left flex items-center gap-8">
