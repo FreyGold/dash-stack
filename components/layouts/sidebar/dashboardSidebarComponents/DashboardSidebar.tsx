@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import {
    dashboardItems,
    pagesItems,
@@ -9,6 +10,7 @@ import { useSidebar } from "@/services/context/SidebarContext";
 
 function DashboardSidebar() {
    const { activeId, setActiveId } = useSidebar();
+   const t = useTranslations("dashboard");
    return (
       <div className="min-w-61 bg-foreground flex-col flex py-6 items-center">
          <h1 className="font-extrabold text-xl text-text mb-8">
@@ -18,7 +20,14 @@ function DashboardSidebar() {
             <SidebarItem
                key={item.id}
                icon={item.icon}
-               title={item.title}
+               title={
+                  t
+                     .raw("sections.dashboardSidebar")
+                     .find(
+                        (obj: { id: string; title: string }) =>
+                           obj.id === item.id
+                     )?.["title"]
+               }
                onClick={() => setActiveId(item.id)}
                isActive={item.id === activeId}
             />
@@ -31,7 +40,14 @@ function DashboardSidebar() {
             <SidebarItem
                key={item.id}
                icon={item.icon}
-               title={item.title}
+               title={
+                  t
+                     .raw("sections.dashboardSidebar")
+                     .find(
+                        (obj: { id: string; title: string }) =>
+                           obj.id === item.id
+                     )?.["title"]
+               }
                onClick={() => setActiveId(item.id)}
                isActive={item.id === activeId}
             />
@@ -42,7 +58,14 @@ function DashboardSidebar() {
             <SidebarItem
                key={item.id}
                icon={item.icon}
-               title={item.title}
+               title={
+                  t
+                     .raw("sections.dashboardSidebar")
+                     .find(
+                        (obj: { id: string; title: string }) =>
+                           obj.id === item.id
+                     )?.["title"]
+               }
                onClick={() => setActiveId(item.id)}
                isActive={item.id === activeId}
             />

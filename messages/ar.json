@@ -1,40 +1,106 @@
 {
-  "dashboard": {
-    "title": "لوحة التحكم",
-    "sections": {
-      "totalCard": {
-        "title": "إجمالي المستخدمين",
-        "value": 40689,
-        "icon": 0,
-        "iconColor": "success",
-        "trend": "زيادة عن أمس",
-        "isTrending": true,
-        "trendColor": "success",
-        "trendValue": 8.5
+   "dashboard": {
+      "title": "لوحة التحكم",
+      "sections": {
+         "dashboardSidebar": [
+            {
+               "id": "dashboard",
+               "title": "لوحة التحكم"
+            },
+            {
+               "id": "products",
+               "title": "المنتجات"
+            },
+            {
+               "id": "favorites",
+               "title": "المفضلة"
+            },
+            {
+               "id": "inbox",
+               "title": "صندوق الوارد"
+            },
+            {
+               "id": "order-lists",
+               "title": "قوائم الطلبات"
+            },
+            {
+               "id": "product-stock",
+               "title": "مخزون المنتجات"
+            },
+            {
+               "id": "pricing",
+               "title": "التسعير"
+            },
+            {
+               "id": "calendar",
+               "title": "التقويم"
+            },
+            {
+               "id": "todo",
+               "title": "قائمة المهام"
+            },
+            {
+               "id": "contact",
+               "title": "الاتصال"
+            },
+            {
+               "id": "invoice",
+               "title": "الفاتورة"
+            },
+            {
+               "id": "ui-elements",
+               "title": "عناصر الواجهة"
+            },
+            {
+               "id": "team",
+               "title": "الفريق"
+            },
+            {
+               "id": "table",
+               "title": "الجدول"
+            },
+            {
+               "id": "settings",
+               "title": "الإعدادات"
+            },
+            {
+               "id": "logout",
+               "title": "تسجيل الخروج"
+            }
+         ],
+         "totalCard": {
+            "title": "إجمالي المستخدمين",
+            "value": 40689,
+            "icon": 0,
+            "iconColor": "success",
+            "trend": "زيادة عن أمس",
+            "isTrending": true,
+            "trendColor": "success",
+            "trendValue": 8.5
+         },
+         "salesDetails": {
+            "title": "تفاصيل المبيعات"
+         },
+         "dealsDetails": {
+            "title": "تفاصيل الصفقات"
+         },
+         "revenue": {
+            "title": "الإيرادات"
+         }
       },
-      "salesDetails": {
-        "title": "تفاصيل المبيعات"
-      },
-      "dealsDetails": {
-        "title": "تفاصيل الصفقات"
-      },
-      "revenue": {
-        "title": "الإيرادات"
-      }
-    },
-    "months": [
-      "يناير",
-      "فبراير",
-      "مارس",
-      "أبريل",
-      "مايو",
-      "يونيو",
-      "يوليو",
-      "أغسطس",
-      "سبتمبر",
-      "أكتوبر",
-      "نوفمبر",
-      "ديسمبر"
-    ]
-  }
+      "months": [
+         "يناير",
+         "فبراير",
+         "مارس",
+         "أبريل",
+         "مايو",
+         "يونيو",
+         "يوليو",
+         "أغسطس",
+         "سبتمبر",
+         "أكتوبر",
+         "نوفمبر",
+         "ديسمبر"
+      ]
+   }
 }
