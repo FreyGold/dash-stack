@@ -2,7 +2,13 @@ import { Button } from "antd";
 import Image from "next/image";
 import { JSX } from "react";
 
-function BrandButton({ icon, type }: { icon: JSX.Element; type: string }) {
+function BrandButton({
+   icon,
+   message,
+}: {
+   icon: JSX.Element;
+   message: string;
+}) {
    return (
       // <Button
       //    block
@@ -21,9 +27,10 @@ function BrandButton({ icon, type }: { icon: JSX.Element; type: string }) {
          style={{
             paddingBlock: "2rem",
             backgroundColor: "var(--c-background)",
+            direction: "ltr",
          }}>
          {icon}
-         <h3 className="font-bold text-xl">{`Sign in with ${type}`}</h3>
+         <h3 className="font-bold text-xl">{message}</h3>
       </Button>
    );
 }

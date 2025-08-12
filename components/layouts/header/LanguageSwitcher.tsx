@@ -2,7 +2,7 @@
 
 import { Select } from "antd";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function LanguageSwitcher() {
@@ -20,11 +20,17 @@ export default function LanguageSwitcher() {
          setSelected("en");
       }
    }, []);
+   const currentPath = usePathname(); // gets the route path (like '/about')
 
    const handleChange = (value: string) => {
       document.cookie = `locale=${value}; path=/`;
+      console.log(currentPath);
       setSelected(value);
-      router.push(`/${value}/dashboard`);
+      if (value == "ar") {
+         router.push(currentPath.replace("/en", "/ar"));
+      } else {
+         router.push(currentPath.replace("/ar", "/en"));
+      }
       router.refresh();
    };
 

@@ -3,14 +3,16 @@ import {
    GoogleLogoIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import BrandButton from "./buttons/BrandButton";
+import { useTranslations } from "next-intl";
 
 function Login() {
+   const t = useTranslations("loginPage");
    return (
       <div className="w-157 h-184 rounded-3xl bg-foreground px-14 py-23 text-text">
          <div className="flex flex-col items-center h-full">
-            <h1 className="font-bold text-3xl mb-4">Login to Account</h1>
+            <h1 className="font-bold text-3xl mb-4">{t("title")}</h1>
             <h3 className="font-medium text-lg opacity-80">
-               Please use Facebook or Google authentication to continue
+               {t("description")}
             </h3>
             <div className="px-4 gap-20 flex flex-col flex-1 w-full justify-center items-center h-full">
                <BrandButton
@@ -21,7 +23,7 @@ function Login() {
                         weight="fill"
                      />
                   }
-                  type="Google"
+                  message={t("useGoogle")}
                />
                <BrandButton
                   icon={
@@ -31,7 +33,7 @@ function Login() {
                         weight="fill"
                      />
                   }
-                  type="Facebook"
+                  message={t("useFacebook")}
                />
             </div>
          </div>

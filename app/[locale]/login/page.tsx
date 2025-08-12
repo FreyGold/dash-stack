@@ -1,4 +1,5 @@
 import Login from "@/components/layouts/auth/Login";
+import LanguageSwitcher from "@/components/layouts/header/LanguageSwitcher";
 
 function page() {
    return (
@@ -9,6 +10,9 @@ function page() {
                alt="Overlay Object"
                className="w-full h-full object-cover"
             />
+         </div>
+         <div className="absolute right-5 top-5">
+            <LanguageSwitcher />
          </div>
          <div className="z-1">
             <Login />

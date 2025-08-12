@@ -89,6 +89,7 @@
          }
       },
       "headerSearchPlaceholder": "Search for anything...",
+
       "months": [
          "January",
          "February",
@@ -103,5 +104,11 @@
          "November",
          "December"
       ]
+   },
+   "loginPage": {
+      "title": "Login to your account",
+      "description": "Please use Facebook or Google authentication to continue",
+      "useGoogle": "Sign in With Google",
+      "useFacebook": "Sign in With Facebook"
    }
 }
