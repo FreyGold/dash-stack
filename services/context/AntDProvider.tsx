@@ -5,17 +5,17 @@ import { darkConfig, lightConfig } from "../constants/ANT_CONFIG";
 import { useDarkLight } from "./DarkLightProvider";
 
 type Props = {
-  children: ReactNode;
+   children: ReactNode;
 };
 
 const AntDProvider: React.FC<Props> = ({ children }) => {
-  const { IsDark } = useDarkLight();
+   const { IsDark } = useDarkLight();
 
-  return (
-    <ConfigProvider theme={IsDark ? darkConfig : lightConfig}>
-      {children}
-    </ConfigProvider>
-  );
+   return (
+      <ConfigProvider theme={IsDark ? darkConfig : lightConfig}>
+         {children}
+      </ConfigProvider>
+   );
 };
 
 export default AntDProvider;

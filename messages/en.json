@@ -103,7 +103,28 @@
          "October",
          "November",
          "December"
-      ]
+      ],
+      "filesTable": {
+         "title": "Files",
+         "addFileButtonTitle": "AddFile",
+         "nameColumnTitle": "Name",
+         "descriptionColumnTitle": "Description",
+         "dateColumnTitle": "Date",
+         "tagColumnTitle": "Tag",
+         "actionColumnTitle": "Actions",
+         "nameFilterTooltip": "Click to sort by name",
+         "dateFilterTooltip": "Click to sort by date",
+         "filterTooltipHint": "Descending order on first click",
+         "filterSearchOkButton": "OK",
+         "filterSearchResetButton": "Reset",
+         "nameFilterSearchButton": "Search",
+         "nameFilterResetButton": "Reset",
+         "nameFilterPlaceholder": "Search Names...",
+         "actionsTooltipQr": "Show QR Code",
+         "actionsTooltipCopy": "Copy Link",
+         "actionsTooltipEdit": "Edit File",
+         "actionsTooltipDelete": "Delete"
+      }
    },
    "loginPage": {
       "title": "Login to your account",

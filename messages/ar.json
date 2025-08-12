@@ -102,7 +102,28 @@
          "أكتوبر",
          "نوفمبر",
          "ديسمبر"
-      ]
+      ],
+      "filesTable": {
+         "title": "الملفات",
+         "addFileButtonTitle": "أضف ملف",
+         "nameColumnTitle": "الاسم",
+         "descriptionColumnTitle": "الوصف",
+         "dateColumnTitle": "التاريخ",
+         "tagColumnTitle": "الشعار",
+         "actionColumnTitle": "الافعال",
+         "nameFilterTooltip": "اضغط للترتيب حسب الاسم",
+         "dateFilterTooltip": "اضغط للترتيب حسب التاريخ",
+         "filterTooltipHint": "الترتيب تنازلي عند الضغطة الأول",
+         "filterSearchOkButton": "حسنا",
+         "filterSearchResetButton": "محو",
+         "nameFilterSearchButton": "بحث",
+         "nameFilterResetButton": "محو",
+         "nameFilterPlaceholder": "ابحث عن الاسماء ...",
+         "actionsTooltipQr": "اظهر رمز QR",
+         "actionsTooltipCopy": "نسخ رابط الملف",
+         "actionsTooltipEdit": "التعديل",
+         "actionsTooltipDelete": "المسح"
+      }
    },
    "loginPage": {
       "title": "تسجيل الدخول إلى حسابك",

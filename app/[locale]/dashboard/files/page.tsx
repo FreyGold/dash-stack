@@ -10,7 +10,7 @@ import {
    TrashIcon,
 } from "@phosphor-icons/react";
 import { CopyIcon } from "@phosphor-icons/react/dist/ssr";
-import { SearchOutlined } from "@ant-design/icons";
+import { useTranslations } from "next-intl";
 
 interface DataType {
    key: React.Key;
@@ -65,128 +65,152 @@ const uniqueTags: ColumnFilterItem[] = Array.from(
    value: tag,
 }));
 
-const columns: TableColumnsType<DataType> = [
-   {
-      title: "Name",
-      dataIndex: "name",
-      fixed: "left",
-      width: 150,
-      filterDropdown: ({
-         setSelectedKeys,
-         selectedKeys,
-         confirm,
-         clearFilters,
-      }) => (
-         <div style={{ padding: 8 }}>
-            <Input
-               placeholder="Search names"
-               value={selectedKeys[0]}
-               onChange={(e) => {
-                  setSelectedKeys(e.target.value ? [e.target.value] : []);
-                  confirm({ closeDropdown: false });
-               }}
-               onPressEnter={() => confirm()}
-               style={{ width: 188, marginBottom: 8, display: "block" }}
-            />
-            <Space>
-               <Button
-                  onClick={() => {
-                     clearFilters?.();
-                     confirm();
-                  }}
-                  size="small">
-                  Reset
-               </Button>
-               <Button type="primary" onClick={() => confirm()} size="small">
-                  Search
-               </Button>
-            </Space>
-         </div>
-      ),
-      filterIcon: (filtered) => (
-         <MagnifyingGlassIcon
-            size={16}
-            style={{ color: filtered ? 'var("--c-primary")' : undefined }}
-         />
-      ),
-      onFilter: (value, record) =>
-         record.name.toLowerCase().includes((value as string).toLowerCase()),
-      sorter: (a, b) => a.name.length - b.name.length,
-      sortDirections: ["descend", "ascend"],
-   },
-   {
-      title: "Description",
-      dataIndex: "description",
-   },
-   {
-      title: "Date",
-      width: 120,
-      dataIndex: "date",
-      sorter: (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-      sortDirections: ["descend", "ascend"],
-   },
-   {
-      title: "Tags",
-      dataIndex: "tag",
-      filters: uniqueTags,
-      onFilter: (value, record) =>
-         value === "ALL" ? true : record.tag === value,
-   },
-   {
-      title: "Actions",
-      key: "actions",
-      width: 200, // Set a fixed width for the actions column
-      render: (_, record) => (
-         <div className="flex space-x-2">
-            <Tooltip title="Show QR Code">
-               <Button
-                  type="text"
-                  icon={<QrCodeIcon size={19} />}
-                  //  onClick={() => handleView(record)}
-               />
-            </Tooltip>
-            <Tooltip title="Copy Link">
-               <Button
-                  type="text"
-                  icon={<CopyIcon size={19} />}
-                  //  onClick={() => handleEdit(record)}
-               />
-            </Tooltip>
-            <Tooltip title="Edit File">
-               <Button
-                  type="text"
-                  icon={<PencilIcon size={19} />}
-                  //  onClick={() => handleEdit(record)}
-               />
-            </Tooltip>
-            <Tooltip title="Danger: Delete File">
-               <Button
-                  type="text"
-                  icon={<TrashIcon size={19} />}
-                  //  onClick={() => handleDelete(record)}
-                  danger
-               />
-            </Tooltip>
-         </div>
-      ),
-   },
-];
+const Page = () => {
+   const t = useTranslations("dashboard.filesTable");
 
-const Page = () => (
-   <div>
-      <div className="flex w-full justify-between">
-         <h1 className="text-2xl font-bold mb-8">Files</h1>
-         <Button>Add File</Button>
+   const columns: TableColumnsType<DataType> = [
+      {
+         title: t("nameColumnTitle"),
+         dataIndex: "name",
+         fixed: "left",
+         width: 150,
+         filterDropdown: ({
+            setSelectedKeys,
+            selectedKeys,
+            confirm,
+            clearFilters,
+         }) => (
+            <div style={{ padding: 8 }}>
+               <Input
+                  placeholder={t("nameFilterPlaceholder")}
+                  value={selectedKeys[0]}
+                  onChange={(e) => {
+                     setSelectedKeys(e.target.value ? [e.target.value] : []);
+                     confirm({ closeDropdown: false });
+                  }}
+                  onPressEnter={() => confirm()}
+                  style={{ width: 188, marginBottom: 8, display: "block" }}
+               />
+               <Space>
+                  <Button
+                     onClick={() => {
+                        clearFilters?.();
+                        confirm();
+                     }}
+                     size="small">
+                     {t("nameFilterResetButton")}
+                  </Button>
+                  <Button type="primary" onClick={() => confirm()} size="small">
+                     {t("nameFilterSearchButton")}
+                  </Button>
+               </Space>
+            </div>
+         ),
+         filterIcon: (filtered) => (
+            <MagnifyingGlassIcon
+               size={16}
+               style={{ color: filtered ? 'var("--c-primary")' : undefined }}
+            />
+         ),
+         showSorterTooltip: {
+            title: (
+               <div>
+                  <div>{t("nameFilterTooltip")}</div>
+                  <div style={{ fontSize: "12px", color: "var(--c-border)" }}>
+                     {t("filterTooltipHint")}
+                  </div>
+               </div>
+            ),
+         },
+         onFilter: (value, record) =>
+            record.name.toLowerCase().includes((value as string).toLowerCase()),
+         sorter: (a, b) => a.name.length - b.name.length,
+         sortDirections: ["descend", "ascend"],
+      },
+      {
+         title: t("descriptionColumnTitle"),
+         dataIndex: "description",
+      },
+      {
+         title: t("dateColumnTitle"),
+         width: 120,
+         dataIndex: "date",
+         showSorterTooltip: {
+            title: (
+               <div>
+                  <div>{t("dateFilterTooltip")}</div>
+                  <div style={{ fontSize: "12px", color: "var(--c-border)" }}>
+                     {t("filterTooltipHint")}
+                  </div>
+               </div>
+            ),
+         },
+         sorter: (a, b) =>
+            new Date(a.date).getTime() - new Date(b.date).getTime(),
+         sortDirections: ["descend", "ascend"],
+      },
+      {
+         title: t("tagColumnTitle"),
+         dataIndex: "tag",
+         filters: uniqueTags,
+         onFilter: (value, record) =>
+            value === "ALL" ? true : record.tag === value,
+      },
+      {
+         title: t("actionColumnTitle"),
+         key: "actions",
+         width: 210,
+         render: (_, record) => (
+            <div className="flex space-x-2">
+               <Tooltip title={t("actionsTooltipQr")}>
+                  <Button
+                     type="text"
+                     icon={<QrCodeIcon size={19} />}
+                     //  onClick={() => handleView(record)}
+                  />
+               </Tooltip>
+               <Tooltip title={t("actionsTooltipCopy")}>
+                  <Button
+                     type="text"
+                     icon={<CopyIcon size={19} />}
+                     //  onClick={() => handleEdit(record)}
+                  />
+               </Tooltip>
+               <Tooltip title={t("actionsTooltipEdit")}>
+                  <Button
+                     type="text"
+                     icon={<PencilIcon size={19} />}
+                     //  onClick={() => handleEdit(record)}
+                  />
+               </Tooltip>
+               <Tooltip title={t("actionsTooltipDelete")}>
+                  <Button
+                     type="text"
+                     icon={<TrashIcon size={19} />}
+                     //  onClick={() => handleDelete(record)}
+                     danger
+                  />
+               </Tooltip>
+            </div>
+         ),
+      },
+   ];
+   return (
+      <div>
+         <div className="flex w-full justify-between">
+            <h1 className="text-2xl font-bold mb-8">Files</h1>
+            <Button>Add File</Button>
+         </div>
+         <Table<DataType>
+            columns={columns}
+            dataSource={data}
+            showSorterTooltip={{ target: "sorter-icon" }}
+            rowKey="key"
+            scroll={{ x: 1200 }}
+            style={{ width: "100%" }}
+         />
       </div>
-      <Table<DataType>
-         columns={columns}
-         dataSource={data}
-         showSorterTooltip={{ target: "sorter-icon" }}
-         rowKey="key"
-         scroll={{ x: 1200 }}
-         style={{ width: "100%" }}
-      />
-   </div>
-);
+   );
+};
 
 export default Page;

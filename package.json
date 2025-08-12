@@ -15,6 +15,7 @@
       "@swc/helpers": "^0.5.17",
       "@tanstack/react-query": "^5.84.1",
       "antd": "^5.26.7",
+      "ar_EG": "link:antd/locale/ar_EG",
       "axios": "^1.11.0",
       "lucide-react": "^0.536.0",
       "next": "15.4.5",
