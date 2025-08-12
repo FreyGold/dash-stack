@@ -5,7 +5,7 @@ export const themeColors = {
       "background-dark": "#F5F6FA",
       border: "#D5D5D5",
       text: "#202224",
-      "text-inverse": "##FFFFFF",
+      "text-inverse": "#FFFFFF",
       "text-light": "#fff",
       background: "#F5F6FA",
       warning: "#FEC53D",

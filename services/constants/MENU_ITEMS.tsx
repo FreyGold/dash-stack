@@ -41,9 +41,9 @@ export const dashboardItems = [
       title: "Inbox",
    },
    {
-      id: "order-lists",
+      id: "files",
       icon: <List width={22} height={25} />,
-      title: "Order Lists",
+      title: "Files",
    },
    {
       id: "product-stock",

@@ -1,21 +1,24 @@
+"use client";
 import {
    FacebookLogoIcon,
    GoogleLogoIcon,
 } from "@phosphor-icons/react/dist/ssr";
-import BrandButton from "./buttons/BrandButton";
+import { LoginButton } from "./buttons/BrandButton";
 import { useTranslations } from "next-intl";
+import { useGoogleAuth } from "@/services/hooks/useGoogleAuth";
 
 function Login() {
+   const { initiateGoogleAuth } = useGoogleAuth();
    const t = useTranslations("loginPage");
    return (
-      <div className="w-157 h-184 rounded-3xl bg-foreground px-14 py-23 text-text">
+      <div className="max-w-157 rounded-3xl bg-foreground px-14 py-23 text-text">
          <div className="flex flex-col items-center h-full">
             <h1 className="font-bold text-3xl mb-4">{t("title")}</h1>
-            <h3 className="font-medium text-lg opacity-80">
+            <h3 className="font-medium text-lg opacity-80 mb-16">
                {t("description")}
             </h3>
-            <div className="px-4 gap-20 flex flex-col flex-1 w-full justify-center items-center h-full">
-               <BrandButton
+            <div className="px-4 gap-12 flex flex-col flex-1 w-full justify-center items-center h-full">
+               <LoginButton
                   icon={
                      <GoogleLogoIcon
                         color="var(--c-primary)"
@@ -23,9 +26,10 @@ function Login() {
                         weight="fill"
                      />
                   }
+                  handleAuth={initiateGoogleAuth}
                   message={t("useGoogle")}
                />
-               <BrandButton
+               <LoginButton
                   icon={
                      <FacebookLogoIcon
                         color="var(--c-primary)"

@@ -6,6 +6,7 @@
    --color-foreground: var(--c-foreground);
    --color-background-dark: var(--c-background-dark);
    --color-text: var(--c-text);
+   --color-text-inverse: var(--c-text-inverse);
    --color-text-light: var(--c-text-light);
    --color-border: var(--c-border);
    --color-success: var(--c-success);
@@ -59,8 +60,7 @@
 
 .bg-dots {
    background-color: #fafafa;
-   background-image:
-      radial-gradient(#ccc 0.5px, transparent 0.5px),
+   background-image: radial-gradient(#ccc 0.5px, transparent 0.5px),
       radial-gradient(#ccc 0.5px, transparent 0.5px);
    background-size: 10px 10px;
    background-position: 0 0, 5px 5px;
