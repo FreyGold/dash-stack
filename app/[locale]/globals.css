@@ -27,7 +27,7 @@
 
 :focus-visible {
    outline: 2px solid var(--color-primary);
-   border-radius: 16px;
+   border-radius: 4px;
 }
 
 .products {
@@ -64,4 +64,10 @@
       radial-gradient(#ccc 0.5px, transparent 0.5px);
    background-size: 10px 10px;
    background-position: 0 0, 5px 5px;
+}
+
+.ant-table-thead > tr {
+   background-color: var(--color-background) !important;
+   opacity: 80 !important;
+   /* color: white !important; */
 }
