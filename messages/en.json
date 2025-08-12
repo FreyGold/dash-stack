@@ -1,135 +1,151 @@
 {
-   "dashboard": {
-      "title": "Dashboard",
-      "sections": {
-         "dashboardSidebar": [
-            {
-               "id": "dashboard",
-               "title": "Dashboard"
-            },
-            {
-               "id": "products",
-               "title": "Products"
-            },
-            {
-               "id": "favorites",
-               "title": "Favorites"
-            },
-            {
-               "id": "inbox",
-               "title": "Inbox"
-            },
-            {
-               "id": "files",
-               "title": "Files"
-            },
-            {
-               "id": "product-stock",
-               "title": "Product Stock"
-            },
-            {
-               "id": "pricing",
-               "title": "Pricing"
-            },
-            {
-               "id": "calendar",
-               "title": "Calendar"
-            },
-            {
-               "id": "todo",
-               "title": "To-Do"
-            },
-            {
-               "id": "contact",
-               "title": "Contact"
-            },
-            {
-               "id": "invoice",
-               "title": "Invoice"
-            },
-            {
-               "id": "ui-elements",
-               "title": "UI Elements"
-            },
-            {
-               "id": "team",
-               "title": "Team"
-            },
-            {
-               "id": "table",
-               "title": "Table"
-            },
-            {
-               "id": "settings",
-               "title": "Settings"
-            },
-            {
-               "id": "logout",
-               "title": "Logout"
-            }
-         ],
-         "totalCard": {
-            "title": "Total Users",
-            "value": 40689,
-            "icon": 0,
-            "iconColor": "success",
-            "trend": "Up from yesterday",
-            "isTrending": true,
-            "trendColor": "success",
-            "trendValue": 8.5
-         },
-         "salesDetails": {
-            "title": "Sales Details"
-         },
-         "dealsDetails": {
-            "title": "Deals Details"
-         },
-         "revenue": {
-            "title": "Revenue"
-         }
-      },
-      "headerSearchPlaceholder": "Search for anything...",
-
-      "months": [
-         "January",
-         "February",
-         "March",
-         "April",
-         "May",
-         "June",
-         "July",
-         "August",
-         "September",
-         "October",
-         "November",
-         "December"
+  "dashboard": {
+    "title": "Dashboard",
+    "sections": {
+      "dashboardSidebar": [
+        {
+          "id": "dashboard",
+          "title": "Dashboard",
+          "url": "dashboard"
+        },
+        {
+          "id": "products",
+          "title": "Products",
+          "url": "dashboard/products"
+        },
+        {
+          "id": "favorites",
+          "title": "Favorites",
+          "url": "dashboard/favorites"
+        },
+        {
+          "id": "inbox",
+          "title": "Inbox",
+          "url": "dashboard/inbox"
+        },
+        {
+          "id": "files",
+          "title": "Files",
+          "url": "dashboard/files"
+        },
+        {
+          "id": "product-stock",
+          "title": "Product Stock",
+          "url": "dashboard/product-stock"
+        },
+        {
+          "id": "pricing",
+          "title": "Pricing",
+          "url": "dashboard/pricing"
+        },
+        {
+          "id": "calendar",
+          "title": "Calendar",
+          "url": "dashboard/calendar"
+        },
+        {
+          "id": "todo",
+          "title": "To-Do",
+          "url": "dashboard/todo"
+        },
+        {
+          "id": "contact",
+          "title": "Contact",
+          "url": "dashboard/contact"
+        },
+        {
+          "id": "invoice",
+          "title": "Invoice",
+          "url": "dashboard/invoice"
+        },
+        {
+          "id": "ui-elements",
+          "title": "UI Elements",
+          "url": "dashboard/ui-elements"
+        },
+        {
+          "id": "team",
+          "title": "Team",
+          "url": "dashboard/team"
+        },
+        {
+          "id": "table",
+          "title": "Table",
+          "url": "dashboard/table"
+        },
+        {
+          "id": "settings",
+          "title": "Settings",
+          "url": "dashboard/settings"
+        },
+        {
+          "id": "logout",
+          "title": "Logout",
+          "url": "dashboard/logout"
+        }
       ],
-      "filesTable": {
-         "title": "Files",
-         "addFileButtonTitle": "AddFile",
-         "nameColumnTitle": "Name",
-         "descriptionColumnTitle": "Description",
-         "dateColumnTitle": "Date",
-         "tagColumnTitle": "Tag",
-         "actionColumnTitle": "Actions",
-         "nameFilterTooltip": "Click to sort by name",
-         "dateFilterTooltip": "Click to sort by date",
-         "filterTooltipHint": "Descending order on first click",
-         "filterSearchOkButton": "OK",
-         "filterSearchResetButton": "Reset",
-         "nameFilterSearchButton": "Search",
-         "nameFilterResetButton": "Reset",
-         "nameFilterPlaceholder": "Search Names...",
-         "actionsTooltipQr": "Show QR Code",
-         "actionsTooltipCopy": "Copy Link",
-         "actionsTooltipEdit": "Edit File",
-         "actionsTooltipDelete": "Delete"
+      "totalCard": {
+        "title": "Total Users",
+        "value": 40689,
+        "icon": 0,
+        "iconColor": "success",
+        "trend": "Up from yesterday",
+        "isTrending": true,
+        "trendColor": "success",
+        "trendValue": 8.5
+      },
+      "salesDetails": {
+        "title": "Sales Details"
+      },
+      "dealsDetails": {
+        "title": "Deals Details"
+      },
+      "revenue": {
+        "title": "Revenue"
       }
-   },
-   "loginPage": {
-      "title": "Login to your account",
-      "description": "Please use Facebook or Google authentication to continue",
-      "useGoogle": "Sign in With Google",
-      "useFacebook": "Sign in With Facebook"
-   }
+    },
+    "headerSearchPlaceholder": "Search for anything...",
+
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "filesTable": {
+      "title": "Files",
+      "addFileButtonTitle": "AddFile",
+      "nameColumnTitle": "Name",
+      "descriptionColumnTitle": "Description",
+      "dateColumnTitle": "Date",
+      "tagColumnTitle": "Tag",
+      "actionColumnTitle": "Actions",
+      "nameFilterTooltip": "Click to sort by name",
+      "dateFilterTooltip": "Click to sort by date",
+      "filterTooltipHint": "Descending order on first click",
+      "filterSearchOkButton": "OK",
+      "filterSearchResetButton": "Reset",
+      "nameFilterSearchButton": "Search",
+      "nameFilterResetButton": "Reset",
+      "nameFilterPlaceholder": "Search Names...",
+      "actionsTooltipQr": "Show QR Code",
+      "actionsTooltipCopy": "Copy Link",
+      "actionsTooltipEdit": "Edit File",
+      "actionsTooltipDelete": "Delete"
+    }
+  },
+  "loginPage": {
+    "title": "Login to your account",
+    "description": "Please use Facebook or Google authentication to continue",
+    "useGoogle": "Sign in With Google",
+    "useFacebook": "Sign in With Facebook"
+  }
 }
