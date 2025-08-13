@@ -3,11 +3,14 @@ import { DashboardHeader } from "@/components/layouts";
 import { DashboardSidebarMinimal } from "@/components/layouts/";
 import DashboardSidebar from "@/components/layouts/sidebar/dashboardSidebarComponents/DashboardSidebar";
 import SidebarDrawer from "@/components/layouts/sidebar/SidebarDrawer";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import Loading from "./loading";
+import { Spin } from "antd";
 
 function Layout({ children }: { children: React.ReactNode }) {
    const [isOpen, setIsOpen] = useState(true);
    const [isMobile, setIsMobile] = useState(false);
+   const [isLoading, setIsLoading] = useState(true);
 
    useEffect(() => {
       const handleResize = () => {
@@ -17,8 +20,14 @@ function Layout({ children }: { children: React.ReactNode }) {
 
       handleResize();
 
+      // Simulate loading (remove this in production)
+      const timer = setTimeout(() => setIsLoading(false), 2000);
+
       window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
+      return () => {
+         window.removeEventListener("resize", handleResize);
+         clearTimeout(timer);
+      };
    }, []);
 
    const gridCols = isOpen
@@ -28,12 +37,11 @@ function Layout({ children }: { children: React.ReactNode }) {
    return (
       <div
          className={`w-screen h-screen grid ${gridCols} font-nunito rtl:font-noto overflow-scroll`}>
+         {/* Sidebar loads immediately */}
          {isOpen && !isMobile && <DashboardSidebar />}
-
          {!isOpen && !isMobile && (
             <DashboardSidebarMinimal setIsOpen={setIsOpen} isOpen={isOpen} />
          )}
-
          {isMobile && <SidebarDrawer setIsOpen={setIsOpen} isOpen={isOpen} />}
 
          <div className="grid grid-rows-[min-content_1fr] col-start-2 col-end-auto">
@@ -42,8 +50,17 @@ function Layout({ children }: { children: React.ReactNode }) {
                isOpen={isOpen}
                isMobile={isMobile}
             />
+
+            {/* Main content area with loading state */}
             <div className="row-start-2 row-end-auto border-t border-l border-border/50 px-8 pt-8 bg-background">
-               {children}
+               {isLoading ? (
+                  <div className="flex justify-center items-center h-full w-full">
+                     <Spin size="large" />
+                     {/* Or use your custom Loading component: <Loading /> */}
+                  </div>
+               ) : (
+                  <Suspense fallback={null}>{children}</Suspense>
+               )}
             </div>
          </div>
       </div>
