@@ -5,19 +5,33 @@ import {
    TrashSimpleIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import FormEditFile from "./formEditFile/FormEditFile";
-import { Button } from "antd";
+import { Breadcrumb, Button } from "antd";
 import SidebarEditFile from "./sidebarEditFile/SidebarEditFile";
+import Link from "next/link";
 
 const EditFilePage = () => {
    return (
       <div className="grid grid-cols-3">
          <header className="flex col-span-full py-5 px-7 justify-between w-full bg-foreground border-border border-1">
             <div className="flex items-center gap-1">
-               <span className="font-bold">Files </span>
+               <Breadcrumb
+                  items={[
+                     {
+                        title: <Link href={"/dashboard"}>Dashboard</Link>,
+                     },
+                     {
+                        title: <Link href={"/dashboard/files"}>Files</Link>,
+                     },
+                     {
+                        title: "Some File Name",
+                     },
+                  ]}
+               />
+               {/* <span className="font-bold">Files</span>
                <span>
                   <CaretRightIcon size={12} weight="bold" />
                </span>
-               <span className="font-semibold">fileNames</span>
+               <span className="font-semibold">fileNames</span> */}
             </div>
             <div className="flex items-center gap-1.5">
                <Button type="default" variant="outlined">
