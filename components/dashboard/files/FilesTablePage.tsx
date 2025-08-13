@@ -11,6 +11,7 @@ import {
 } from "@phosphor-icons/react";
 import { CopyIcon } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 interface DataType {
    key: React.Key;
@@ -67,6 +68,7 @@ const uniqueTags: ColumnFilterItem[] = Array.from(
 
 const FilesTablePage = () => {
    const t = useTranslations("dashboard.filesTable");
+   const router = useRouter();
 
    //TODO: memoize
    const columns: TableColumnsType<DataType> = [
@@ -181,7 +183,7 @@ const FilesTablePage = () => {
                   <Button
                      type="text"
                      icon={<PencilIcon size={19} />}
-                     //  onClick={() => handleEdit(record)}
+                     onClick={() => router.push("/dashboard/files/editfile")}
                   />
                </Tooltip>
                <Tooltip title={t("actionsTooltipDelete")}>
