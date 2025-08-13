@@ -1,134 +1,151 @@
 {
-   "dashboard": {
-      "title": "لوحة التحكم",
-      "sections": {
-         "dashboardSidebar": [
-            {
-               "id": "dashboard",
-               "title": "لوحة التحكم"
-            },
-            {
-               "id": "products",
-               "title": "المنتجات"
-            },
-            {
-               "id": "favorites",
-               "title": "المفضلة"
-            },
-            {
-               "id": "inbox",
-               "title": "صندوق الوارد"
-            },
-            {
-               "id": "files",
-               "title": "الملفات"
-            },
-            {
-               "id": "product-stock",
-               "title": "مخزون المنتجات"
-            },
-            {
-               "id": "pricing",
-               "title": "التسعير"
-            },
-            {
-               "id": "calendar",
-               "title": "التقويم"
-            },
-            {
-               "id": "todo",
-               "title": "قائمة المهام"
-            },
-            {
-               "id": "contact",
-               "title": "الاتصال"
-            },
-            {
-               "id": "invoice",
-               "title": "الفاتورة"
-            },
-            {
-               "id": "ui-elements",
-               "title": "عناصر الواجهة"
-            },
-            {
-               "id": "team",
-               "title": "الفريق"
-            },
-            {
-               "id": "table",
-               "title": "الجدول"
-            },
-            {
-               "id": "settings",
-               "title": "الإعدادات"
-            },
-            {
-               "id": "logout",
-               "title": "تسجيل الخروج"
-            }
-         ],
-         "totalCard": {
-            "title": "إجمالي المستخدمين",
-            "value": 40689,
-            "icon": 0,
-            "iconColor": "success",
-            "trend": "زيادة عن أمس",
-            "isTrending": true,
-            "trendColor": "success",
-            "trendValue": 8.5
-         },
-         "salesDetails": {
-            "title": "تفاصيل المبيعات"
-         },
-         "dealsDetails": {
-            "title": "تفاصيل الصفقات"
-         },
-         "revenue": {
-            "title": "الإيرادات"
-         }
-      },
-      "headerSearchPlaceholder": "اكتب هنا للبحث ...",
-      "months": [
-         "يناير",
-         "فبراير",
-         "مارس",
-         "أبريل",
-         "مايو",
-         "يونيو",
-         "يوليو",
-         "أغسطس",
-         "سبتمبر",
-         "أكتوبر",
-         "نوفمبر",
-         "ديسمبر"
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "sections": {
+      "dashboardSidebar": [
+        {
+          "id": "dashboard",
+          "title": "لوحة التحكم",
+          "url": "dashboard"
+        },
+        {
+          "id": "products",
+          "title": "المنتجات",
+          "url": "dashboard/products"
+        },
+        {
+          "id": "favorites",
+          "title": "المفضلة",
+          "url": "dashboard/favorites"
+        },
+        {
+          "id": "inbox",
+          "title": "صندوق الوارد",
+          "url": "dashboard/inbox"
+        },
+        {
+          "id": "files",
+          "title": "الملفات",
+          "url": "dashboard/files"
+        },
+        {
+          "id": "product-stock",
+          "title": "مخزون المنتجات",
+          "url": "dashboard/product-stock"
+        },
+        {
+          "id": "pricing",
+          "title": "التسعير",
+          "url": "dashboard/pricing"
+        },
+        {
+          "id": "calendar",
+          "title": "التقويم",
+          "url": "dashboard/calendar"
+        },
+        {
+          "id": "todo",
+          "title": "قائمة المهام",
+          "url": "dashboard/todo"
+        },
+        {
+          "id": "contact",
+          "title": "الاتصال",
+          "url": "dashboard/contact"
+        },
+        {
+          "id": "invoice",
+          "title": "الفاتورة",
+          "url": "dashboard/invoice"
+        },
+        {
+          "id": "ui-elements",
+          "title": "عناصر الواجهة",
+          "url": "dashboard/ui-elements"
+        },
+        {
+          "id": "team",
+          "title": "الفريق",
+          "url": "dashboard/team"
+        },
+        {
+          "id": "table",
+          "title": "الجدول",
+          "url": "dashboard/table"
+        },
+        {
+          "id": "settings",
+          "title": "الإعدادات",
+          "url": "dashboard/settings"
+        },
+        {
+          "id": "logout",
+          "title": "تسجيل الخروج",
+          "url": "dashboard/logout"
+        }
       ],
-      "filesTable": {
-         "title": "الملفات",
-         "addFileButtonTitle": "أضف ملف",
-         "nameColumnTitle": "الاسم",
-         "descriptionColumnTitle": "الوصف",
-         "dateColumnTitle": "التاريخ",
-         "tagColumnTitle": "الشعار",
-         "actionColumnTitle": "الافعال",
-         "nameFilterTooltip": "اضغط للترتيب حسب الاسم",
-         "dateFilterTooltip": "اضغط للترتيب حسب التاريخ",
-         "filterTooltipHint": "الترتيب تنازلي عند الضغطة الأول",
-         "filterSearchOkButton": "حسنا",
-         "filterSearchResetButton": "محو",
-         "nameFilterSearchButton": "بحث",
-         "nameFilterResetButton": "محو",
-         "nameFilterPlaceholder": "ابحث عن الاسماء ...",
-         "actionsTooltipQr": "اظهر رمز QR",
-         "actionsTooltipCopy": "نسخ رابط الملف",
-         "actionsTooltipEdit": "التعديل",
-         "actionsTooltipDelete": "المسح"
+
+      "totalCard": {
+        "title": "إجمالي المستخدمين",
+        "value": 40689,
+        "icon": 0,
+        "iconColor": "success",
+        "trend": "زيادة عن أمس",
+        "isTrending": true,
+        "trendColor": "success",
+        "trendValue": 8.5
+      },
+      "salesDetails": {
+        "title": "تفاصيل المبيعات"
+      },
+      "dealsDetails": {
+        "title": "تفاصيل الصفقات"
+      },
+      "revenue": {
+        "title": "الإيرادات"
       }
-   },
-   "loginPage": {
-      "title": "تسجيل الدخول إلى حسابك",
-      "description": "من فضلك استخدم حساب جوجل أو فيسبوك لتسجيل الدخول",
-      "useGoogle": "تسجيل الدخول باستخدام حساب جوجل",
-      "useFacebook": "تسجيل الدخول باستخدام حساب فيسبوك"
-   }
+    },
+    "headerSearchPlaceholder": "اكتب هنا للبحث ...",
+    "months": [
+      "يناير",
+      "فبراير",
+      "مارس",
+      "أبريل",
+      "مايو",
+      "يونيو",
+      "يوليو",
+      "أغسطس",
+      "سبتمبر",
+      "أكتوبر",
+      "نوفمبر",
+      "ديسمبر"
+    ],
+    "filesTable": {
+      "title": "الملفات",
+      "addFileButtonTitle": "أضف ملف",
+      "nameColumnTitle": "الاسم",
+      "descriptionColumnTitle": "الوصف",
+      "dateColumnTitle": "التاريخ",
+      "tagColumnTitle": "الشعار",
+      "actionColumnTitle": "الافعال",
+      "nameFilterTooltip": "اضغط للترتيب حسب الاسم",
+      "dateFilterTooltip": "اضغط للترتيب حسب التاريخ",
+      "filterTooltipHint": "الترتيب تنازلي عند الضغطة الأول",
+      "filterSearchOkButton": "حسنا",
+      "filterSearchResetButton": "محو",
+      "nameFilterSearchButton": "بحث",
+      "nameFilterResetButton": "محو",
+      "nameFilterPlaceholder": "ابحث عن الاسماء ...",
+      "actionsTooltipQr": "اظهر رمز QR",
+      "actionsTooltipCopy": "نسخ رابط الملف",
+      "actionsTooltipEdit": "التعديل",
+      "actionsTooltipDelete": "المسح"
+    }
+  },
+  "loginPage": {
+    "title": "تسجيل الدخول إلى حسابك",
+    "description": "من فضلك استخدم حساب جوجل أو فيسبوك لتسجيل الدخول",
+    "useGoogle": "تسجيل الدخول باستخدام حساب جوجل",
+    "useFacebook": "تسجيل الدخول باستخدام حساب فيسبوك"
+  }
 }

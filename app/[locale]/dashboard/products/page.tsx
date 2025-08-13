@@ -5,7 +5,9 @@ function page() {
   return (
     <div>
       <FeaturedSlider />
-      <div className="bg-amber-600 mt-10">
+      <div className="flex justify-between pb-7 mt-10">
+        <ProductSlider />
+        <ProductSlider />
         <ProductSlider />
       </div>
     </div>
