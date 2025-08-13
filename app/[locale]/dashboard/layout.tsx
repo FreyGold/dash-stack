@@ -16,7 +16,7 @@ function Layout({ children }: { children: React.ReactNode }) {
             <DashboardSidebarMinimal setIsOpen={setIsOpen} isOpen={isOpen} />
          )}
          {/* <SidebarDrawer setIsOpen={setIsOpen} isOpen={isOpen} /> */}
-         <div className="flex flex-col w-full h-full">
+         <div className="flex flex-col w-full h-full ">
             <DashboardHeader setIsOpen={setIsOpen} isOpen={isOpen} />
             <div className="flex-1 border-t border-l border-border/50 px-8 pt-8 bg-background">
                {children}

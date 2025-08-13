@@ -8,6 +8,7 @@ import { SidebarProvider } from "./SidebarContext";
 
 type Props = {
    children: ReactNode;
+   locale: string;
 };
 
 const SetCSSVariables = () => {
@@ -25,11 +26,17 @@ const SetCSSVariables = () => {
    return null;
 };
 
-const UiProvider: React.FC<Props> = ({ children }) => {
+const UiProvider: React.FC<Props> = ({
+   children,
+   locale,
+}: {
+   children: ReactNode;
+   locale: string;
+}) => {
    return (
       <DarkLightProvider>
          <SetCSSVariables />
-         <AntDProvider>
+         <AntDProvider locale={locale}>
             <ReactQueryProvider>
                <SidebarProvider>{children}</SidebarProvider>
             </ReactQueryProvider>

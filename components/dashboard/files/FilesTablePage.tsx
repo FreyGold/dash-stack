@@ -68,6 +68,7 @@ const uniqueTags: ColumnFilterItem[] = Array.from(
 const FilesTablePage = () => {
    const t = useTranslations("dashboard.filesTable");
 
+   //TODO: memoize
    const columns: TableColumnsType<DataType> = [
       {
          title: t("nameColumnTitle"),
