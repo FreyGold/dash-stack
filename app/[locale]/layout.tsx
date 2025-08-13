@@ -1,20 +1,11 @@
 import type { Metadata } from "next";
-import {
-   Geist,
-   Geist_Mono,
-   Nunito_Sans,
-   Noto_Sans_Arabic,
-} from "next/font/google";
+import { Nunito_Sans, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import UiProvider from "@/services/context/UiProvider";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import "@ant-design/v5-patch-for-react-19";
-import { ConfigProvider } from "antd";
-
-import arEG from "antd/locale/ar_EG";
-import enUS from "antd/locale/en_US";
 
 const nunitoSans = Nunito_Sans({
    variable: "--font-nunito-sans",
@@ -46,11 +37,9 @@ export default async function RootLayout({
       <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
          <body
             className={`${nunitoSans.variable} antialiased ${notoSans.variable} `}>
-            <UiProvider>
-               <ConfigProvider locale={locale === "ar" ? arEG : enUS}>
-                  <NextIntlClientProvider>{children}</NextIntlClientProvider>
-               </ConfigProvider>
-            </UiProvider>
+            <NextIntlClientProvider>
+               <UiProvider locale={locale}>{children}</UiProvider>
+            </NextIntlClientProvider>
          </body>
       </html>
    );
