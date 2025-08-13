@@ -11,8 +11,8 @@ function Layout({ children }: { children: React.ReactNode }) {
 
    useEffect(() => {
       const handleResize = () => {
-         setIsMobile(window.innerWidth < 768);
-         if (window.innerWidth < 768) setIsOpen(false);
+         setIsMobile(window.innerWidth < 920);
+         if (window.innerWidth < 920) setIsOpen(false);
       };
 
       handleResize();

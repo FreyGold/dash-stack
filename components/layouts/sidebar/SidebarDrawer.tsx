@@ -18,7 +18,7 @@ const SidebarDrawer = ({
    const onClose = () => {
       setIsOpen(false);
    };
-
+   const width = window.innerWidth > 420 ? "300px" : "100%";
    return (
       <Drawer
          placement="left"
@@ -27,7 +27,7 @@ const SidebarDrawer = ({
          mask={true}
          maskClosable={true}
          zIndex={1000}
-         width="100%"
+         width={width}
          destroyOnHidden={false}
          styles={{
             header: {
