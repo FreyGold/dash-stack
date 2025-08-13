@@ -36,7 +36,7 @@ function SignUp() {
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4">
-      <Card className="w-full max-w-md rounded-2xl !py-12 !px-14 shadow-lg">
+      <Card className="w-full max-w-md rounded-2xl !py-12 !px-15 shadow-lg">
         <h1 className="text-2xl text-center font-bold mb-2">{t("title")}</h1>
         <p className="mb-6 font-medium opacity-80 text-center">
           {t("description")}

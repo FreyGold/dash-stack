@@ -1,4 +1,4 @@
-import SignUpMainPage from "@/components/layouts/auth/SignUpMainPage";
+import SignUpMainPage from "@/components/layouts/auth/signup/SignUpMainPage";
 
 function page() {
   return <SignUpMainPage />;
