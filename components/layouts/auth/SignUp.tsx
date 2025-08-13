@@ -6,32 +6,37 @@ import { Form, Input, Button, Card, message } from "antd";
 import { useEmailAuth } from "@/services/hooks/useEmailAuth";
 import Link from "next/link";
 
-function Login() {
-  const t = useTranslations("loginPage");
-  const { loginWithEmail } = useEmailAuth();
+function SignUp() {
+  const t = useTranslations("signUpPage");
+  const { signUpWithEmail } = useEmailAuth();
   const router = useRouter();
   const locale = useLocale();
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
 
-  const handleLogin = async (values: { email: string; password: string }) => {
+  const handleSignup = async (values: { email: string; password: string }) => {
     setLoading(true);
-    const { user, error } = await loginWithEmail(values.email, values.password);
+    const { user, error } = await signUpWithEmail(
+      values.email,
+      values.password
+    );
     setLoading(false);
 
     if (error) {
-      message.error(error.message || "Login failed");
+      message.error(error.message || "Signup failed");
     } else {
-      message.success(`Welcome back, ${user?.email}`);
+      message.success(
+        `Account created for ${user?.email}. Please check your email to confirm.`
+      );
       setTimeout(() => {
-        router.push(`/${locale}/home`);
-      }, 1000);
+        router.push(`/${locale}/login`);
+      }, 1200);
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4">
-      <Card className="w-full max-w-md rounded-2xl !py-10 !px-8 shadow-lg">
+      <Card className="w-full max-w-md rounded-2xl !py-12 !px-14 shadow-lg">
         <h1 className="text-2xl text-center font-bold mb-2">{t("title")}</h1>
         <p className="mb-6 font-medium opacity-80 text-center">
           {t("description")}
@@ -40,7 +45,7 @@ function Login() {
         <Form
           form={form}
           layout="vertical"
-          onFinish={handleLogin}
+          onFinish={handleSignup}
           className="space-y-4"
         >
           <Form.Item
@@ -80,14 +85,14 @@ function Login() {
               loading={loading}
               className="flex-1 rounded-lg"
             >
-              Login
+              Create New Account
             </Button>
           </div>
 
           <div className="text-xs text-center pt-2">
-            <span className="opacity-65">Don’t have an account?</span>{" "}
-            <Link href={`/${locale}/signup`} className=" hover:underline">
-              Create Account
+            <span className="opacity-65">Have an account?</span>{" "}
+            <Link href={`/${locale}/login`} className="hover:underline">
+              Sign In
             </Link>
           </div>
         </Form>
@@ -96,4 +101,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;
