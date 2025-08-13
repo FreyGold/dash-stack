@@ -8,14 +8,24 @@ import LanguageSwitcher from "./LanguageSwitcher";
 function DashboardHeader({
    setIsOpen,
    isOpen,
+   isMobile,
 }: {
    setIsOpen: Dispatch<SetStateAction<boolean>>;
    isOpen: boolean;
+   isMobile: boolean;
 }) {
    return (
       <div className="w-full flex bg-foreground px-8 items-center justify-between text-text p-2 ">
          <div className="left flex items-center gap-8">
-            {isOpen && (
+            {!isMobile && isOpen && (
+               <AlignJustify
+                  width={24}
+                  height={25}
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="cursor-pointer"
+               />
+            )}
+            {isMobile && (
                <AlignJustify
                   width={24}
                   height={25}
