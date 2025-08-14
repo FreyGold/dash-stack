@@ -20,13 +20,9 @@ function Layout({ children }: { children: React.ReactNode }) {
 
       handleResize();
 
-      // Simulate loading (remove this in production)
-      const timer = setTimeout(() => setIsLoading(false), 2000);
-
       window.addEventListener("resize", handleResize);
       return () => {
          window.removeEventListener("resize", handleResize);
-         clearTimeout(timer);
       };
    }, []);
 
@@ -36,7 +32,9 @@ function Layout({ children }: { children: React.ReactNode }) {
 
    return (
       <div
-         className={`w-screen h-screen grid ${gridCols} font-nunito rtl:font-noto overflow-scroll`}>
+         className={`w-screen h-screen grid ${
+            isMobile ? "grid-cols-1" : gridCols
+         } font-nunito rtl:font-noto overflow-scroll`}>
          {/* Sidebar loads immediately */}
          {isOpen && !isMobile && <DashboardSidebar />}
          {!isOpen && !isMobile && (

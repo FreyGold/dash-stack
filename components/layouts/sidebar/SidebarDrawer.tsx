@@ -34,6 +34,7 @@ const SidebarDrawer = ({
                height: 0,
                padding: 0,
                minHeight: 0,
+               display: "none",
             },
          }}>
          <div className="flex justify-center items-center md:hidden h-2">
