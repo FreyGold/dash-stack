@@ -13,17 +13,17 @@ function Layout({ children }: { children: React.ReactNode }) {
    const [isOpen, setIsOpen] = useState(true);
    const [isMobile, setIsMobile] = useState(false);
    const [isLoading, setIsLoading] = useState(true);
-  const supabase = createClientComponentClient();
-  const router = useRouter();
+   const supabase = createClientComponentClient();
+   const router = useRouter();
 
-  useEffect(() => {
-    const session = localStorage.getItem("supabaseSession");
-    if (session) {
-      const parsed = JSON.parse(session);
-      console.log(parsed);
-      setLoading(false);
-    }
-  }, []);
+   useEffect(() => {
+      const session = localStorage.getItem("supabaseSession");
+      if (session) {
+         const parsed = JSON.parse(session);
+         console.log(parsed);
+         setIsLoading(false);
+      }
+   }, []);
    useEffect(() => {
       const handleResize = () => {
          setIsMobile(window.innerWidth < 920);
@@ -74,3 +74,8 @@ function Layout({ children }: { children: React.ReactNode }) {
                )}
             </div>
          </div>
+      </div>
+   );
+}
+
+export default Layout;
