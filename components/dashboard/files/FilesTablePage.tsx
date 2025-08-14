@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useMemo } from "react";
 import { Button, Input, Space, Table, Tooltip } from "antd";
 import type { TableColumnsType } from "antd";
 import type { ColumnFilterItem } from "antd/es/table/interface";
@@ -71,133 +71,142 @@ const FilesTablePage = () => {
    const router = useRouter();
 
    //TODO: memoize
-   const columns: TableColumnsType<DataType> = [
-      {
-         title: t("nameColumnTitle"),
-         dataIndex: "name",
-         fixed: "left",
-         width: 150,
-         filterDropdown: ({
-            setSelectedKeys,
-            selectedKeys,
-            confirm,
-            clearFilters,
-         }) => (
-            <div style={{ padding: 8 }}>
-               <Input
-                  placeholder={t("nameFilterPlaceholder")}
-                  value={selectedKeys[0]}
-                  onChange={(e) => {
-                     setSelectedKeys(e.target.value ? [e.target.value] : []);
-                     confirm({ closeDropdown: false });
-                  }}
-                  onPressEnter={() => confirm()}
-                  style={{ width: 188, marginBottom: 8, display: "block" }}
-               />
-               <Space>
-                  <Button
-                     onClick={() => {
-                        clearFilters?.();
-                        confirm();
+   const columns: TableColumnsType<DataType> = useMemo(() => {
+      return [
+         {
+            title: t("nameColumnTitle"),
+            dataIndex: "name",
+            fixed: "left",
+            width: 150,
+            filterDropdown: ({
+               setSelectedKeys,
+               selectedKeys,
+               confirm,
+               clearFilters,
+            }) => (
+               <div style={{ padding: 8 }}>
+                  <Input
+                     placeholder={t("nameFilterPlaceholder")}
+                     value={selectedKeys[0]}
+                     onChange={(e) => {
+                        setSelectedKeys(e.target.value ? [e.target.value] : []);
+                        confirm({ closeDropdown: false });
                      }}
-                     size="small">
-                     {t("nameFilterResetButton")}
-                  </Button>
-                  <Button type="primary" onClick={() => confirm()} size="small">
-                     {t("nameFilterSearchButton")}
-                  </Button>
-               </Space>
-            </div>
-         ),
-         filterIcon: (filtered) => (
-            <MagnifyingGlassIcon
-               size={16}
-               style={{ color: filtered ? 'var("--c-primary")' : undefined }}
-            />
-         ),
-         showSorterTooltip: {
-            title: (
-               <div>
-                  <div>{t("nameFilterTooltip")}</div>
-                  <div style={{ fontSize: "12px", color: "var(--c-border)" }}>
-                     {t("filterTooltipHint")}
+                     onPressEnter={() => confirm()}
+                     style={{ width: 188, marginBottom: 8, display: "block" }}
+                  />
+                  <Space>
+                     <Button
+                        onClick={() => {
+                           clearFilters?.();
+                           confirm();
+                        }}
+                        size="small">
+                        {t("nameFilterResetButton")}
+                     </Button>
+                     <Button
+                        type="primary"
+                        onClick={() => confirm()}
+                        size="small">
+                        {t("nameFilterSearchButton")}
+                     </Button>
+                  </Space>
+               </div>
+            ),
+            filterIcon: (filtered) => (
+               <MagnifyingGlassIcon
+                  size={16}
+                  style={{ color: filtered ? 'var("--c-primary")' : undefined }}
+               />
+            ),
+            showSorterTooltip: {
+               title: (
+                  <div>
+                     <div>{t("nameFilterTooltip")}</div>
+                     <div
+                        style={{ fontSize: "12px", color: "var(--c-border)" }}>
+                        {t("filterTooltipHint")}
+                     </div>
                   </div>
+               ),
+            },
+            onFilter: (value, record) =>
+               record.name
+                  .toLowerCase()
+                  .includes((value as string).toLowerCase()),
+            sorter: (a, b) => a.name.length - b.name.length,
+            sortDirections: ["descend", "ascend"],
+         },
+         {
+            title: t("descriptionColumnTitle"),
+            dataIndex: "description",
+         },
+         {
+            title: t("dateColumnTitle"),
+            width: 120,
+            dataIndex: "date",
+            showSorterTooltip: {
+               title: (
+                  <div>
+                     <div>{t("dateFilterTooltip")}</div>
+                     <div
+                        style={{ fontSize: "12px", color: "var(--c-border)" }}>
+                        {t("filterTooltipHint")}
+                     </div>
+                  </div>
+               ),
+            },
+            sorter: (a, b) =>
+               new Date(a.date).getTime() - new Date(b.date).getTime(),
+            sortDirections: ["descend", "ascend"],
+         },
+         {
+            title: t("tagColumnTitle"),
+            dataIndex: "tag",
+            filters: uniqueTags,
+            onFilter: (value, record) =>
+               value === "ALL" ? true : record.tag === value,
+         },
+         {
+            title: t("actionColumnTitle"),
+            key: "actions",
+            width: 210,
+            render: (_, record) => (
+               <div className="flex space-x-2">
+                  <Tooltip title={t("actionsTooltipQr")}>
+                     <Button
+                        type="text"
+                        icon={<QrCodeIcon size={19} />}
+                        //  onClick={() => handleView(record)}
+                     />
+                  </Tooltip>
+                  <Tooltip title={t("actionsTooltipCopy")}>
+                     <Button
+                        type="text"
+                        icon={<CopyIcon size={19} />}
+                        //  onClick={() => handleEdit(record)}
+                     />
+                  </Tooltip>
+                  <Tooltip title={t("actionsTooltipEdit")}>
+                     <Button
+                        type="text"
+                        icon={<PencilIcon size={19} />}
+                        onClick={() => router.push("/dashboard/files/editfile")}
+                     />
+                  </Tooltip>
+                  <Tooltip title={t("actionsTooltipDelete")}>
+                     <Button
+                        type="text"
+                        icon={<TrashIcon size={19} />}
+                        //  onClick={() => handleDelete(record)}
+                        danger
+                     />
+                  </Tooltip>
                </div>
             ),
          },
-         onFilter: (value, record) =>
-            record.name.toLowerCase().includes((value as string).toLowerCase()),
-         sorter: (a, b) => a.name.length - b.name.length,
-         sortDirections: ["descend", "ascend"],
-      },
-      {
-         title: t("descriptionColumnTitle"),
-         dataIndex: "description",
-      },
-      {
-         title: t("dateColumnTitle"),
-         width: 120,
-         dataIndex: "date",
-         showSorterTooltip: {
-            title: (
-               <div>
-                  <div>{t("dateFilterTooltip")}</div>
-                  <div style={{ fontSize: "12px", color: "var(--c-border)" }}>
-                     {t("filterTooltipHint")}
-                  </div>
-               </div>
-            ),
-         },
-         sorter: (a, b) =>
-            new Date(a.date).getTime() - new Date(b.date).getTime(),
-         sortDirections: ["descend", "ascend"],
-      },
-      {
-         title: t("tagColumnTitle"),
-         dataIndex: "tag",
-         filters: uniqueTags,
-         onFilter: (value, record) =>
-            value === "ALL" ? true : record.tag === value,
-      },
-      {
-         title: t("actionColumnTitle"),
-         key: "actions",
-         width: 210,
-         render: (_, record) => (
-            <div className="flex space-x-2">
-               <Tooltip title={t("actionsTooltipQr")}>
-                  <Button
-                     type="text"
-                     icon={<QrCodeIcon size={19} />}
-                     //  onClick={() => handleView(record)}
-                  />
-               </Tooltip>
-               <Tooltip title={t("actionsTooltipCopy")}>
-                  <Button
-                     type="text"
-                     icon={<CopyIcon size={19} />}
-                     //  onClick={() => handleEdit(record)}
-                  />
-               </Tooltip>
-               <Tooltip title={t("actionsTooltipEdit")}>
-                  <Button
-                     type="text"
-                     icon={<PencilIcon size={19} />}
-                     onClick={() => router.push("/dashboard/files/editfile")}
-                  />
-               </Tooltip>
-               <Tooltip title={t("actionsTooltipDelete")}>
-                  <Button
-                     type="text"
-                     icon={<TrashIcon size={19} />}
-                     //  onClick={() => handleDelete(record)}
-                     danger
-                  />
-               </Tooltip>
-            </div>
-         ),
-      },
-   ];
+      ];
+   }, [t, router]);
    return (
       <div>
          <div className="flex w-full justify-between">
