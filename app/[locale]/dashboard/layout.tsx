@@ -1,17 +1,29 @@
 "use client";
+
 import { DashboardHeader } from "@/components/layouts";
 import { DashboardSidebarMinimal } from "@/components/layouts/";
 import DashboardSidebar from "@/components/layouts/sidebar/dashboardSidebarComponents/DashboardSidebar";
 import SidebarDrawer from "@/components/layouts/sidebar/SidebarDrawer";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "./loading";
 import { Spin } from "antd";
-
 function Layout({ children }: { children: React.ReactNode }) {
    const [isOpen, setIsOpen] = useState(true);
    const [isMobile, setIsMobile] = useState(false);
    const [isLoading, setIsLoading] = useState(true);
+  const supabase = createClientComponentClient();
+  const router = useRouter();
 
+  useEffect(() => {
+    const session = localStorage.getItem("supabaseSession");
+    if (session) {
+      const parsed = JSON.parse(session);
+      console.log(parsed);
+      setLoading(false);
+    }
+  }, []);
    useEffect(() => {
       const handleResize = () => {
          setIsMobile(window.innerWidth < 920);
@@ -29,7 +41,6 @@ function Layout({ children }: { children: React.ReactNode }) {
    const gridCols = isOpen
       ? "grid-cols-[240px_1fr]"
       : "grid-cols-[min-content_1fr]";
-
    return (
       <div
          className={`w-screen h-screen grid ${
@@ -61,8 +72,3 @@ function Layout({ children }: { children: React.ReactNode }) {
                )}
             </div>
          </div>
-      </div>
-   );
-}
-
-export default Layout;
