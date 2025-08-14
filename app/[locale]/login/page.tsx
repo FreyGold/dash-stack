@@ -1,7 +1,7 @@
-import LoginMainPage from "@/components/layouts/auth/LoginMainPage";
+import LoginMainPage from "@/components/layouts/auth/login/LoginMainPage";
 
 function page() {
-   return <LoginMainPage />;
+  return <LoginMainPage />;
 }
 
 export default page;
