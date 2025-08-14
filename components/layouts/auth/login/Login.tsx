@@ -24,7 +24,7 @@ function Login() {
     } else {
       message.success(`Welcome back, ${user?.email}`);
       setTimeout(() => {
-        router.push(`/${locale}/home`);
+        router.push(`/${locale}/dashboard`);
       }, 1000);
     }
   };

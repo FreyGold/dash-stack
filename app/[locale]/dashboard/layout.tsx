@@ -17,21 +17,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    const checkSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (!session) {
-        router.push("/login");
-      } else {
-        setLoading(false);
-      }
-    };
-
-    checkSession();
-  }, [supabase, router]);
-
+    const session = localStorage.getItem("supabaseSession");
+    if (session) {
+      const parsed = JSON.parse(session);
+      console.log(parsed);
+      setLoading(false);
+    }
+  }, []);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 920);

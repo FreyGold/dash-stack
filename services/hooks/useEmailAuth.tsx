@@ -7,6 +7,9 @@ export const useEmailAuth = () => {
       email,
       password,
     });
+    if (!error && data.session) {
+      localStorage.setItem("supabaseSession", JSON.stringify(data.session));
+    }
     if (error) {
       console.error("Login Error:", error.message);
       return { user: null, error };
