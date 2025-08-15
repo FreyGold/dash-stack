@@ -5,6 +5,7 @@ import React, {
    type ReactNode,
    useMemo,
    useContext,
+   useEffect,
 } from "react";
 
 type Theme = "light" | "dark" | "system";
@@ -30,6 +31,7 @@ export const DarkLightProvider: React.FC<Props> = ({ children }) => {
       return (
          dark === "dark" ||
          (dark === "system" &&
+            typeof window !== "undefined" &&
             window.matchMedia("(prefers-color-scheme: dark)").matches)
       );
    }, [dark]);

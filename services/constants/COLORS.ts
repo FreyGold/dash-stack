@@ -27,7 +27,7 @@ export const themeColors = {
       background: "#1B2431",
       "background-dark": "#323D4E",
       border: "#CFCFCF1D",
-      text: "##FFFFFF",
+      text: "#FFFFFF",
       "text-inverse": "#202224",
       foreground: "#273142",
       warning: "#FEC53D",
