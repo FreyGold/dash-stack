@@ -9,21 +9,13 @@ import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "./loading";
 import { Spin } from "antd";
+import { Loader2 } from "lucide-react";
 function Layout({ children }: { children: React.ReactNode }) {
    const [isOpen, setIsOpen] = useState(true);
    const [isMobile, setIsMobile] = useState(false);
-   const [isLoading, setIsLoading] = useState(true);
    const supabase = createClientComponentClient();
    const router = useRouter();
 
-   useEffect(() => {
-      const session = localStorage.getItem("supabaseSession");
-      if (session) {
-         const parsed = JSON.parse(session);
-         console.log(parsed);
-         setIsLoading(false);
-      }
-   }, []);
    useEffect(() => {
       const handleResize = () => {
          setIsMobile(window.innerWidth < 920);
@@ -62,14 +54,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
             {/* Main content area with loading state */}
             <div className="row-start-2 row-end-auto border-t border-l border-border/50 px-8 pt-8 bg-background">
-               {isLoading ? (
-                  <div className="flex justify-center items-center h-full w-full">
-                     <Spin size="large" />
-                     {/* Or use your custom Loading component: <Loading /> */}
-                  </div>
-               ) : (
-                  <Suspense fallback={null}>{children}</Suspense>
-               )}
+               {children}
             </div>
          </div>
       </div>
