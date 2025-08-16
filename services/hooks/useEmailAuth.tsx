@@ -1,7 +1,11 @@
 "use client";
-import { supabase } from "@/libs/supabase/supabaseClient";
+
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+
+// import { supabase } from "@/libs/supabase/supabaseClient";
 
 export const useEmailAuth = () => {
+  const supabase = createClientComponentClient();
   const loginWithEmail = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
