@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -14,12 +14,24 @@ function SidebarMinimalItem({
   onClick: () => void;
 }) {
   const router = useRouter();
-  const locale = useLocale();
+  const supabase = createClientComponentClient();
 
+  //   const locale = useLocale();
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Error signing out:", error.message);
+    } else {
+      router.replace("/login");
+    }
+  };
   function handleClick() {
     onClick();
-
-    router.push(`/${locale}/${url}`);
+    if (url === "dashboard/logout") {
+      handleLogout();
+    } else {
+      router.push(`/${url}`);
+    }
   }
   return (
     <div
