@@ -7,7 +7,7 @@ import { Input as AntDInput } from "antd";
 import { useTranslations } from "next-intl";
 import { useState, useRef } from "react"; // Import useRef and useEffect
 
-function SearchInput() {
+function SearchInput({ isMobile }: { isMobile: boolean }) {
    const t = useTranslations("dashboard");
    const searchPlaceholder = t("headerSearchPlaceholder");
    //  const { setSearch } = useSearch();
@@ -27,7 +27,8 @@ function SearchInput() {
    };
 
    const [isOpen, setIsOpen] = useState(false);
-   const width = isOpen ? "30rem" : "26rem";
+   const widthStarter = isMobile ? 12 : 24;
+   const width = isOpen ? `${widthStarter + 6}rem` : `${widthStarter}rem`;
 
    return (
       <AntDInput
