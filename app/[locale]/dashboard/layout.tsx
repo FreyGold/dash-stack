@@ -6,10 +6,10 @@ import { redirect } from "next/navigation";
 async function Layout({ children }: { children: React.ReactNode }) {
   const supabase = createServerComponentClient({ cookies });
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
-  console.log(session);
-  if (!session) {
+    data: { user },
+  } = await supabase.auth.getUser();
+  console.log(user);
+  if (!user) {
     redirect("/login");
   }
   return <LayoutDashboard>{children}</LayoutDashboard>;

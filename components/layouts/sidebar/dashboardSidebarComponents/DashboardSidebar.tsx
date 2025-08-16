@@ -22,7 +22,7 @@ function DashboardSidebar({
   isMobile: boolean;
   locale?: string;
 }) {
-  const { activeId, setActiveId } = useSidebar();
+  const { activeId } = useSidebar();
   const t = useTranslations("dashboard");
   console.log(activeId);
   return (
@@ -90,7 +90,7 @@ function DashboardSidebar({
           }
           onClick={() => {
             closeHandler?.();
-            setActiveId(() => item.url);
+            // setActiveId(() => item.url);
           }}
           isActive={item.url === activeId}
         />
@@ -106,7 +106,7 @@ function DashboardSidebar({
           icon={item.icon}
           onClick={() => {
             closeHandler?.();
-            setActiveId(() => item.url);
+            // setActiveId(() => item.url);
           }}
           title={
             t
@@ -127,7 +127,7 @@ function DashboardSidebar({
           icon={item.icon}
           onClick={() => {
             closeHandler?.();
-            setActiveId(() => item.url);
+            // setActiveId(() => item.url);
           }}
           title={
             t

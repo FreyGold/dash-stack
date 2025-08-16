@@ -11,7 +11,7 @@ function SidebarMinimalItem({
   url: string;
   icon: ReactNode;
   isActive?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }) {
   const router = useRouter();
   const supabase = createClientComponentClient();
@@ -26,7 +26,7 @@ function SidebarMinimalItem({
     }
   };
   function handleClick() {
-    onClick();
+    onClick?.();
     if (url === "dashboard/logout") {
       handleLogout();
     } else {
