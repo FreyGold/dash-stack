@@ -3,6 +3,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { Button, Drawer } from "antd";
 import DashboardSidebar from "./dashboardSidebarComponents/DashboardSidebar";
 import { XIcon } from "@phosphor-icons/react";
+import { usePathname } from "next/navigation";
 
 const SidebarDrawer = ({
    isOpen,
@@ -13,6 +14,9 @@ const SidebarDrawer = ({
    setIsOpen: Dispatch<SetStateAction<boolean>>;
    isMobile: boolean;
 }) => {
+   const pathname = usePathname();
+   const locale = pathname.split("/")[1];
+
    const showDrawer = () => {
       setIsOpen(true);
    };
@@ -23,7 +27,7 @@ const SidebarDrawer = ({
    const width = window.innerWidth > 420 ? "400px" : "100%";
    return (
       <Drawer
-         placement="left"
+         placement={locale === "ar" ? "right" : "left"}
          onClose={onClose}
          open={isOpen}
          mask={true}
@@ -39,7 +43,11 @@ const SidebarDrawer = ({
                display: "none",
             },
          }}>
-         <DashboardSidebar closeHandler={onClose} isMobile={isMobile} />
+         <DashboardSidebar
+            closeHandler={onClose}
+            isMobile={isMobile}
+            locale={locale}
+         />
       </Drawer>
    );
 };

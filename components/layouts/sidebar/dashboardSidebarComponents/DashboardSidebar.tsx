@@ -16,9 +16,11 @@ import { DownCircleOutlined } from "@ant-design/icons";
 function DashboardSidebar({
    closeHandler,
    isMobile,
+   locale,
 }: {
    closeHandler?: () => void;
    isMobile: boolean;
+   locale: string;
 }) {
    const { activeId, setActiveId } = useSidebar();
    const t = useTranslations("dashboard");
@@ -51,7 +53,7 @@ function DashboardSidebar({
                            <LanguageSwitcher />
                         </div>
                      }
-                     placement="bottomRight">
+                     placement={locale === "ar" ? "bottomLeft" : "bottomRight"}>
                      <Button type="text" icon={<DownCircleOutlined />}></Button>
                   </Popover>
                </div>
