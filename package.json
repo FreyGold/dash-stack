@@ -10,6 +10,7 @@
    },
    "dependencies": {
       "@ant-design/icons": "~5.6.1",
+      "@ant-design/nextjs-registry": "^1.1.0",
       "@ant-design/v5-patch-for-react-19": "^1.0.3",
       "@phosphor-icons/react": "^2.1.10",
       "@supabase/auth-helpers-nextjs": "^0.10.0",

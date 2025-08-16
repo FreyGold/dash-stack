@@ -1,12 +1,7 @@
-import { Spin } from "antd";
-import { Loader2Icon } from "lucide-react";
+import MainHomePageSkeleton from "@/components/skeletons/MainHomePageSkeleton";
 
-function Loading() {
-   return (
-      <div className="w-screen h-screen flex justify-center items-center">
-         <Spin size="large" />
-      </div>
-   );
+function loading() {
+   return <MainHomePageSkeleton />;
 }
 
-export default Loading;
+export default loading;

@@ -68,7 +68,7 @@ const AreaChartComponent = ({
    }
 
    return (
-      <div className=" px-6 py-7 rounded-lg shadow bg-foreground w-full">
+      <div className="md:px-6 px-3 md:py-7 py-3 rounded-lg shadow bg-foreground w-full text-sm">
          <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold">{title}</h2>
             <Select
