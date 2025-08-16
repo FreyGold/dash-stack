@@ -27,7 +27,6 @@ export const useGoogleAuth = () => {
 
          //  const data = await response.json();
          const authUrl = response.data.data.authUrl;
-         console.log(authUrl);
          window.location.href = authUrl;
       } catch (error) {
          console.error("Google auth initiation failed:", error);

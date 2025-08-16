@@ -20,13 +20,16 @@ function DashboardSidebar({
 }: {
    closeHandler?: () => void;
    isMobile: boolean;
-   locale: string;
+   locale?: string;
 }) {
    const { activeId, setActiveId } = useSidebar();
    const t = useTranslations("dashboard");
 
    return (
-      <div className="min-w-61 bg-foreground flex-col flex items-center">
+      <div
+         className={`min-w-61 bg-foreground flex-col flex items-center ${
+            isMobile ? "" : "py-6"
+         }`}>
          {!isMobile && (
             <h1 className="font-extrabold text-xl text-text mb-8">
                <span className="text-primary">Dash</span>Stack

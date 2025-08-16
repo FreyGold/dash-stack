@@ -31,7 +31,9 @@ function MainHomePage() {
    return (
       <main className="flex w-full h-full p-8 gap-7 bg-background flex-col">
          <h1 className="font-bold text-4xl tracking-tight">{t("title")}</h1>
-         <section className="gap-8 flex w-full md:flex-nowrap flex-wrap">
+         <section className="gap-8 flex w-full lg:flex-nowrap flex-wrap">
+            {/* <section className="gap-8 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"> */}
+
             <TotalCard
                title={totalCard.title}
                value={totalCard.value}
