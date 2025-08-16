@@ -22,10 +22,9 @@ function SidebarItem({
 
    function handleClick() {
       onClick();
-
       router.push(`/${locale}/${url}`);
    }
-
+   console.log(isActive, url);
    return (
       //  <Link className="block" href={`${link}`}>
       <div

@@ -24,7 +24,7 @@ function DashboardSidebar({
 }) {
    const { activeId, setActiveId } = useSidebar();
    const t = useTranslations("dashboard");
-
+   console.log(activeId);
    return (
       <div
          className={`min-w-61 bg-foreground flex-col flex items-center ${
@@ -91,9 +91,9 @@ function DashboardSidebar({
                }
                onClick={() => {
                   closeHandler && closeHandler();
-                  setActiveId(() => `/${item.url}`);
+                  setActiveId(() => item.url);
                }}
-               isActive={`/${item.url}` === activeId}
+               isActive={item.url === activeId}
             />
          ))}
          <div className="border-background border/80 border w-full my-3"></div>
@@ -107,7 +107,7 @@ function DashboardSidebar({
                icon={item.icon}
                onClick={() => {
                   closeHandler && closeHandler();
-                  setActiveId(() => `/${item.url}`);
+                  setActiveId(() => item.url);
                }}
                title={
                   t
@@ -117,7 +117,7 @@ function DashboardSidebar({
                            obj.id === item.id
                      )?.["title"]
                }
-               isActive={`/${item.url}` === activeId}
+               isActive={item.url === activeId}
             />
          ))}
          <div className="border-background border/80 border w-full my-3"></div>
@@ -129,7 +129,7 @@ function DashboardSidebar({
                icon={item.icon}
                onClick={() => {
                   closeHandler && closeHandler();
-                  setActiveId(() => `/${item.url}`);
+                  setActiveId(() => item.url);
                }}
                title={
                   t
@@ -139,7 +139,7 @@ function DashboardSidebar({
                            obj.id === item.id
                      )?.["title"]
                }
-               isActive={`/${item.url}` === activeId}
+               isActive={item.url === activeId}
             />
          ))}
       </div>
