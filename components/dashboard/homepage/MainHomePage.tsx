@@ -75,21 +75,23 @@ function MainHomePage() {
                trendValue={totalCard.trendValue}
             />
          </section>
-         {/* <section className="mt-9">
+         <section className="mt-9">
             <AreaChartComponent
                title={t("sections.salesDetails.title")}
                chartData={AreaChartData}
             />
          </section>
-         <section className="mt-9">
-            <DealsDetails title={t("sections.dealsDetails.title")} />
-         </section>
+         {!isMobile && (
+            <section className="mt-9">
+               <DealsDetails title={t("sections.dealsDetails.title")} />
+            </section>
+         )}
          <section className="mt-9">
             <StackedChartComponent
                title={t("sections.revenue.title")}
                chartData={StackedChartData}
             />
-         </section> */}
+         </section>
       </main>
    );
 }

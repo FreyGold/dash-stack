@@ -45,14 +45,16 @@ function Layout({ children }: { children: React.ReactNode }) {
             />
          )}
 
-         <div className="grid grid-rows-[min-content_1fr] col-start-2 col-end-auto">
+         <div className="grid grid-rows-[min-content_1fr] lg:col-start-2 col-end-auto items-center">
+            {/* <div className="flex flex-col col-start-2 col-end-auto"> */}
             <DashboardHeader
                setIsOpen={setIsOpen}
                isOpen={isOpen}
                isMobile={isMobile}
             />
 
-            <div className="row-start-2 row-end-auto border-t border-l border-border/50 md:px-8 px-2 pt-8 bg-background">
+            {/* <div className="flex-1 border-t border-l border-border/50 md:px-8 px-2 pt-8 bg-background"> */}
+            <div className="row-start-2 row-end-auto border-t border-l border-border/50 md:px-8 px-2 pt-8 bg-background h-full">
                {children}
             </div>
          </div>

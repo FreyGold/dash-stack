@@ -160,7 +160,7 @@ const DealsDetails = ({ title }: { title: string }) => {
    };
 
    return (
-      <div className="px-6 py-7 rounded-lg shadow bg-foreground w-[60%] md:w-full overflow-x-scroll">
+      <div className="px-6 py-7 rounded-lg shadow bg-foreground max-w-full">
          <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-bold">{title}</h2>
             <Select
@@ -178,12 +178,15 @@ const DealsDetails = ({ title }: { title: string }) => {
                </Option>
             </Select>
          </div>
-         <Table
-            dataSource={dataSource[selectedMonth]}
-            pagination={false}
-            className="mt-7"
-            columns={columns}
-         />
+         <div className="overflow-x-scroll max-w-full">
+            <Table
+               dataSource={dataSource[selectedMonth]}
+               pagination={false}
+               scroll={{ x: 400 }}
+               className="mt-7"
+               columns={columns}
+            />
+         </div>
       </div>
    );
 };

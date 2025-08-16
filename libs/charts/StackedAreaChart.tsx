@@ -67,7 +67,7 @@ const StackedChartComponent = ({
    }
 
    return (
-      <div className="px-8 pt-9 pb-8 mt-3 rounded-lg shadow bg-foreground w-[60%] md:w-full">
+      <div className="md:px-6 px-3 md:py-7 py-3 rounded-lg shadow bg-foreground w-full">
          <div className="flex justify-between items-center ">
             <h2 className="text-2xl font-bold">{title}</h2>
             <Select
