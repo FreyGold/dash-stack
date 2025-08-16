@@ -33,11 +33,17 @@ function Layout({ children }: { children: React.ReactNode }) {
          className={`w-screen h-screen grid ${
             isMobile ? "grid-cols-1" : gridCols
          } font-nunito rtl:font-noto overflow-scroll`}>
-         {isOpen && !isMobile && <DashboardSidebar />}
+         {isOpen && !isMobile && <DashboardSidebar isMobile={isMobile} />}
          {!isOpen && !isMobile && (
             <DashboardSidebarMinimal setIsOpen={setIsOpen} isOpen={isOpen} />
          )}
-         {isMobile && <SidebarDrawer setIsOpen={setIsOpen} isOpen={isOpen} />}
+         {isMobile && (
+            <SidebarDrawer
+               setIsOpen={setIsOpen}
+               isOpen={isOpen}
+               isMobile={isMobile}
+            />
+         )}
 
          <div className="grid grid-rows-[min-content_1fr] col-start-2 col-end-auto">
             <DashboardHeader
@@ -46,7 +52,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                isMobile={isMobile}
             />
 
-            <div className="row-start-2 row-end-auto border-t border-l border-border/50 px-8 pt-8 bg-background">
+            <div className="row-start-2 row-end-auto border-t border-l border-border/50 md:px-8 px-2 pt-8 bg-background">
                {children}
             </div>
          </div>

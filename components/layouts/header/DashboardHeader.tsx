@@ -15,8 +15,14 @@ function DashboardHeader({
    isMobile: boolean;
 }) {
    return (
-      <div className="w-full flex bg-foreground px-8 items-center justify-between text-text p-2 ">
-         <div className="left flex items-center gap-8">
+      <div
+         className={`w-full flex bg-foreground ${
+            isMobile ? "px-5" : "px-8"
+         } items-center justify-between text-text p-2`}>
+         <div
+            className={`left flex items-center  ${
+               isMobile ? "gap-4" : "gap-8"
+            }`}>
             {!isMobile && isOpen && (
                <AlignJustify
                   width={24}
@@ -27,8 +33,8 @@ function DashboardHeader({
             )}
             {isMobile && (
                <AlignJustify
-                  width={24}
-                  height={25}
+                  width={20}
+                  height={21}
                   onClick={() => setIsOpen(!isOpen)}
                   className="cursor-pointer"
                />

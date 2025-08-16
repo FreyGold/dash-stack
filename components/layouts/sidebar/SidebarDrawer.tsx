@@ -7,9 +7,11 @@ import { XIcon } from "@phosphor-icons/react";
 const SidebarDrawer = ({
    isOpen,
    setIsOpen,
+   isMobile,
 }: {
    isOpen: boolean;
    setIsOpen: Dispatch<SetStateAction<boolean>>;
+   isMobile: boolean;
 }) => {
    const showDrawer = () => {
       setIsOpen(true);
@@ -18,7 +20,7 @@ const SidebarDrawer = ({
    const onClose = () => {
       setIsOpen(false);
    };
-   const width = window.innerWidth > 420 ? "300px" : "100%";
+   const width = window.innerWidth > 420 ? "400px" : "100%";
    return (
       <Drawer
          placement="left"
@@ -37,12 +39,7 @@ const SidebarDrawer = ({
                display: "none",
             },
          }}>
-         <div className="flex justify-center items-center md:hidden h-2">
-            <Button onClick={onClose} type="text" className="py-0">
-               <XIcon size={24} />
-            </Button>
-         </div>
-         <DashboardSidebar closeHandler={onClose} />
+         <DashboardSidebar closeHandler={onClose} isMobile={isMobile} />
       </Drawer>
    );
 };
