@@ -208,7 +208,7 @@ const FilesTablePage = () => {
       ];
    }, [t, router]);
    return (
-      <div>
+      <div className="overflow-x-auto">
          <div className="flex w-full justify-between">
             <h1 className="text-2xl font-bold mb-8">{t("title")}</h1>
             <Button>{t("addFileButtonTitle")}</Button>

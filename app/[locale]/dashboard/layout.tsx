@@ -54,7 +54,7 @@ function Layout({ children }: { children: React.ReactNode }) {
             />
 
             {/* <div className="flex-1 border-t border-l border-border/50 md:px-8 px-2 pt-8 bg-background"> */}
-            <div className="row-start-2 row-end-auto border-t border-l border-border/50 md:px-8 px-2 pt-8 bg-background h-full">
+            <div className="row-start-2 row-end-auto border-t border-l border-border/50 md:px-8 px-2 pt-8 bg-background h-full overflow-x-hidden">
                {children}
             </div>
          </div>
