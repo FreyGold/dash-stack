@@ -5,7 +5,6 @@ import React, {
    type ReactNode,
    useMemo,
    useContext,
-   useEffect,
 } from "react";
 
 type Theme = "light" | "dark" | "system";

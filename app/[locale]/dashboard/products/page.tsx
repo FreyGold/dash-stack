@@ -1,4 +1,3 @@
-import FeaturedSlider from "@/components/dashboard/products/featuredSlider/FeaturedSlider";
 import ProductSlider from "@/components/dashboard/products/productSlider/ProductSlider";
 
 function page() {
