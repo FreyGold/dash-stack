@@ -1,6 +1,6 @@
 import { MainHomePage } from "../../../components/dashboard";
 
-function Page() {
+async function Page() {
   return <MainHomePage />;
 }
 
