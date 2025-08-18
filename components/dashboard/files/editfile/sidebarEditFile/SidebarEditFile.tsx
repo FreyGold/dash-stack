@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const SidebarEditFile = () => {
    return (
-      <aside className="col-span-1 bg-foreground pt-7 border-border border-1 border-t-0">
-         <div className="py-7 border-b   px-5 border-border">
+      <aside className="col-span-1 bg-foreground border-border border-1 border-t-0 border-b-1 ltr:rounded-br-2xl rtl:rounded-bl-2xl">
+         <div className="py-7 border-b px-5 border-border ">
             <Typography.Title level={5}>Folder</Typography.Title>{" "}
             <Select
                showSearch
@@ -29,7 +29,7 @@ const SidebarEditFile = () => {
                <EditOutlined className="cursor-pointer bg-text-light px-3 py-2 rounded-xl absolute end-5.5" />
             </div>
          </div>
-         <div className="py-7 border-b border-border px-5">
+         <div className="py-7 px-5">
             <Typography.Title level={5}>Preview</Typography.Title>
             <div className="relative  rounded-lg overflow-hidden ">
                <Image

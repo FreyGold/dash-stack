@@ -12,7 +12,7 @@ import Link from "next/link";
 const EditFilePage = () => {
    return (
       <div className="grid grid-cols-3">
-         <header className="flex col-span-full py-5 px-7 justify-between w-full bg-foreground border-border border-1">
+         <header className="flex col-span-full py-5 px-7 justify-between w-full bg-foreground border-border border-1 rounded-t-2xl">
             <div className="flex items-center gap-1">
                <Breadcrumb
                   items={[
@@ -27,11 +27,6 @@ const EditFilePage = () => {
                      },
                   ]}
                />
-               {/* <span className="font-bold">Files</span>
-               <span>
-                  <CaretRightIcon size={12} weight="bold" />
-               </span>
-               <span className="font-semibold">fileNames</span> */}
             </div>
             <div className="flex items-center gap-1.5">
                <Button type="default" variant="outlined">
@@ -45,7 +40,9 @@ const EditFilePage = () => {
                />
             </div>
          </header>
-         <FormEditFile />
+         <div className="bg-foreground col-span-2 col-start-1 border-s-1 border-border border-b-1 ltr:rounded-bl-2xl rtl:rounded-br-2xl">
+            <FormEditFile />
+         </div>
          <SidebarEditFile />
       </div>
    );

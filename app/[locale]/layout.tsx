@@ -38,7 +38,7 @@ export default async function RootLayout({
             <script
                dangerouslySetInnerHTML={{
                   __html: `
-              (function() {
+               (function() {
                 const lightTheme = {
                   primary: "#4880FF",
                   foreground: "#ffffff",
@@ -76,7 +76,7 @@ export default async function RootLayout({
             />
          </head>
          <body
-            className={`${nunitoSans.variable} antialiased ${notoSans.variable} `}>
+            className={`${nunitoSans.variable} antialiased ${notoSans.variable}`}>
             <NextIntlClientProvider>
                <UiProvider locale={locale}>{children}</UiProvider>
             </NextIntlClientProvider>

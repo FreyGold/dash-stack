@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Table, Skeleton } from "antd";
+import { Table } from "antd";
 import type { TableColumnsType } from "antd";
 
 // Dynamic imports for Ant Design skeleton components
