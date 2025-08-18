@@ -4,7 +4,7 @@ import { DashboardHeader } from "@/components/layouts";
 import { DashboardSidebarMinimal } from "@/components/layouts/";
 import DashboardSidebar from "@/components/layouts/sidebar/dashboardSidebarComponents/DashboardSidebar";
 import SidebarDrawer from "@/components/layouts/sidebar/SidebarDrawer";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 function LayoutDashboard({ children }: { children: React.ReactNode }) {
    const [isOpen, setIsOpen] = useState(true);
@@ -55,7 +55,7 @@ function LayoutDashboard({ children }: { children: React.ReactNode }) {
 
             {/* <div className="flex-1 border-t border-l border-border/50 md:px-8 px-2 pt-8 bg-background"> */}
             <div className="row-start-2 row-end-auto border-t border-s border-border/50 md:px-8 px-2 pt-8 bg-background h-full overflow-x-hidden">
-               {children}
+               <Suspense>{children}</Suspense>
             </div>
          </div>
       </div>
