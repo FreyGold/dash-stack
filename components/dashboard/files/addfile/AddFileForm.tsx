@@ -16,6 +16,7 @@ interface FormValues {
 }
 
 const AddFileForm: React.FC = () => {
+   // TODO: get user from supabase and attach it in the supabase insertion
    const supabase = createClientComponentClient();
    const [api, contextHolder] = notification.useNotification();
    const [loading, setLoading] = useState(false);
@@ -99,7 +100,7 @@ const AddFileForm: React.FC = () => {
                   {
                      name: values.title,
                      description: values.description,
-                     publicUrl: publicUrl,
+                     destination_url: publicUrl,
                   },
                ])
                .select();
@@ -108,7 +109,7 @@ const AddFileForm: React.FC = () => {
             showError("Database Error", (dbError as Error).message);
          }
 
-         showSuccess("File information saved successfully!");
+         showSuccess("File Uploaded successfully!");
          form.resetFields();
       } catch (error) {
          console.error("Submit error:", error);
@@ -206,7 +207,7 @@ const AddFileForm: React.FC = () => {
                      htmlType="submit"
                      loading={loading}
                      size="large">
-                     {loading ? "Saving..." : "Save File"}
+                     {loading ? "Uploading..." : "Upload File"}
                   </Button>
                   <Button
                      htmlType="button"
