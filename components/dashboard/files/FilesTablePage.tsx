@@ -211,7 +211,11 @@ const FilesTablePage = () => {
       <div className="overflow-x-auto">
          <div className="flex w-full justify-between">
             <h1 className="text-2xl font-bold mb-8">{t("title")}</h1>
-            <Button>{t("addFileButtonTitle")}</Button>
+            <Button
+               type="primary"
+               onClick={() => router.push("/dashboard/files/addfile")}>
+               {t("addFileButtonTitle")}
+            </Button>
          </div>
          <Table<DataType>
             columns={columns}
