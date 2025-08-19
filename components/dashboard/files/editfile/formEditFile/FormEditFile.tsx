@@ -1,60 +1,202 @@
+"use client";
+import { useState } from "react";
 import { PencilSimpleIcon } from "@phosphor-icons/react/dist/ssr";
-import { Space, Select, Typography } from "antd";
-import Input from "antd/es/input/Input";
-import TextArea from "antd/es/input/TextArea";
+import { Space, Typography, Input, Button, notification, Select } from "antd";
+import { FileData } from "../../shared/types";
+import { createClient } from "@/libs/supabase/supabaseClient";
 
-const options = [
-   {
-      value: "zhejiang",
-      label: "Zhejiang",
-   },
-   {
-      value: "jiangsu",
-      label: "Jiangsu",
-   },
-];
-const FormEditFile = () => {
-   return (
-      <div className="col-span-2  px-20 pt-7">
-         <div className="mb-8">
-            <Typography.Title level={5}>Destination URL</Typography.Title>
-            <Input size="large" value={"test"} />
-         </div>
-         <div className="mb-8">
-            <div className="flex items-center justify-between">
-               <Typography.Title level={5}>ShortLink</Typography.Title>
-               <PencilSimpleIcon
-                  className="!text-primary"
-                  size={24}
-                  weight="bold"
-               />
-            </div>
-            <Space.Compact className="w-full">
-               <Select size="large" defaultValue="Short.sh" options={options} />
-               <Input
-                  size="large"
-                  className="w-full"
-                  defaultValue="Link Shortening"
-               />
-            </Space.Compact>
-         </div>
-         <div className="mb-8">
-            {/* // TODO: turn to a text area, with color selecting for the tag */}
-            <Typography.Title level={5}>Tags</Typography.Title>
-            <Select
-               mode="tags"
-               className="tags"
-               size="large"
-               style={{ width: "100%" }}
-               placeholder="Tags Mode"
-            />
-         </div>
-         <div className="mb-8">
-            <Typography.Title level={5}>Comments</Typography.Title>
-            <TextArea size="large" placeholder="Add comments" />
-         </div>
+const FormEditFile = ({ file }: { file: FileData }) => {
+  const supabase = createClient();
+
+  // states
+  const [destinationUrl, setDestinationUrl] = useState(file.destination_url);
+  const [name, setName] = useState(file.name);
+  const [tag, setTag] = useState(file.tag || "");
+  const [description, setDescription] = useState(file.description || "");
+
+  // editable states
+  const [isEditingDestination, setIsEditingDestination] = useState(false);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingTag, setIsEditingTag] = useState(false);
+  const [isEditingDescription, setIsEditingDescription] = useState(false);
+
+  // handle update
+  const handleSave = async (
+    field: "destination_url" | "name" | "tag" | "description"
+  ) => {
+    const updateData: Partial<FileData> = {};
+    if (field === "destination_url" && destinationUrl !== file.destination_url)
+      updateData.destination_url = destinationUrl;
+    if (field === "name" && name !== file.name) updateData.name = name;
+    if (field === "tag" && tag !== file.tag) updateData.tag = tag;
+    if (field === "description" && description !== file.description)
+      updateData.description = description;
+
+    // إذا مفيش تغييرات، ما نرسلش الريكوست
+    if (Object.keys(updateData).length === 0) {
+      notification.info({
+        message: "No changes to save",
+      });
+      return;
+    }
+
+    const { error } = await supabase
+      .from("files")
+      .update(updateData)
+      .eq("id", file.id);
+
+    if (error) {
+      console.error(error);
+      notification.error({
+        message: "Failed to update file",
+      });
+    } else {
+      notification.success({
+        message: "File updated successfully 🎉",
+      });
+      if (field === "destination_url") setIsEditingDestination(false);
+      if (field === "name") setIsEditingName(false);
+      if (field === "tag") setIsEditingTag(false);
+      if (field === "description") setIsEditingDescription(false);
+    }
+  };
+
+  return (
+    <div className="col-span-2 px-20 pt-7">
+      {/* Name */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between">
+          <Typography.Title level={5}>Name</Typography.Title>
+          <PencilSimpleIcon
+            className="!text-primary cursor-pointer"
+            size={24}
+            weight="bold"
+            onClick={() => setIsEditingName(true)}
+          />
+        </div>
+        <Space.Compact className="w-full">
+          <Input
+            size="large"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            disabled={!isEditingName}
+          />
+          {isEditingName && (
+            <Button
+              size="large"
+              type="primary"
+              onClick={() => handleSave("name")}
+            >
+              Save
+            </Button>
+          )}
+        </Space.Compact>
+      </div>{" "}
+      {/* Description */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between">
+          <Typography.Title level={5}>Description</Typography.Title>
+          <PencilSimpleIcon
+            className="!text-primary cursor-pointer"
+            size={24}
+            weight="bold"
+            onClick={() => setIsEditingDescription(true)}
+          />
+        </div>
+        <Space.Compact className="w-full">
+          <Input.TextArea
+            size="large"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            disabled={!isEditingDescription}
+            rows={4}
+          />
+          {isEditingDescription && (
+            <Button
+              size="large"
+              type="primary"
+              onClick={() => handleSave("description")}
+            >
+              Save
+            </Button>
+          )}
+        </Space.Compact>
       </div>
-   );
+      {/* Destination URL */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between">
+          <Typography.Title level={5}>Destination URL</Typography.Title>
+          <PencilSimpleIcon
+            className="!text-primary cursor-pointer"
+            size={24}
+            weight="bold"
+            onClick={() => setIsEditingDestination(true)}
+          />
+        </div>
+        <Space.Compact className="w-full">
+          <Input
+            size="large"
+            value={destinationUrl}
+            onChange={(e) => setDestinationUrl(e.target.value)}
+            disabled={!isEditingDestination}
+          />
+          {isEditingDestination && (
+            <Button
+              size="large"
+              type="primary"
+              onClick={() => handleSave("destination_url")}
+            >
+              Save
+            </Button>
+          )}
+        </Space.Compact>
+      </div>
+      {/* ShortLink Section */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between">
+          <Typography.Title level={5}>ShortLink</Typography.Title>
+          <PencilSimpleIcon className="!text-primary" size={24} weight="bold" />
+        </div>
+        <Space.Compact className="w-full">
+          <Select size="large" defaultValue="Short.sh" options={[]} />
+          <Input
+            size="large"
+            className="w-full"
+            defaultValue="Link Shortening"
+          />
+        </Space.Compact>
+      </div>
+      {/* Tag */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between">
+          <Typography.Title level={5}>Tag</Typography.Title>
+          <PencilSimpleIcon
+            className="!text-primary cursor-pointer"
+            size={24}
+            weight="bold"
+            onClick={() => setIsEditingTag(true)}
+          />
+        </div>
+        <Space.Compact className="w-full">
+          <Input
+            size="large"
+            value={tag}
+            onChange={(e) => setTag(e.target.value)}
+            disabled={!isEditingTag}
+          />
+          {isEditingTag && (
+            <Button
+              size="large"
+              type="primary"
+              onClick={() => handleSave("tag")}
+            >
+              Save
+            </Button>
+          )}
+        </Space.Compact>
+      </div>
+    </div>
+  );
 };
 
 export default FormEditFile;
