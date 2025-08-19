@@ -72,13 +72,6 @@
    /* color: white !important; */
 }
 
-/* FIXME: 
-where does that come
-:root *, :root :active {
-    cursor: default !important;
-}
- */
-
 .cursor-pointer {
    cursor: pointer !important;
 }

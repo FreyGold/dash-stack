@@ -123,7 +123,7 @@ const AddFileForm: React.FC = () => {
       multiple: false,
       accept: ".pdf",
       disabled: loading,
-      beforeUpload: () => false, // ✅ Prevent auto upload
+      beforeUpload: () => false,
       showUploadList: {
          showPreviewIcon: true,
          showDownloadIcon: true,
