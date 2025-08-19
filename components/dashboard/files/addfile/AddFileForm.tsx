@@ -2,9 +2,8 @@
 import React, { useState } from "react";
 import { InboxOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Button, DatePicker, Form, Input, notification, Upload } from "antd";
-import { FormInstance } from "antd/lib";
+import { createClient } from "@/libs/supabase/supabaseClient";
 
 const { Dragger } = Upload;
 const { TextArea } = Input;
@@ -17,7 +16,7 @@ interface FormValues {
 
 const AddFileForm: React.FC = () => {
    // TODO: get user from supabase and attach it in the supabase insertion
-   const supabase = createClientComponentClient();
+   const supabase = createClient();
    const [api, contextHolder] = notification.useNotification();
    const [loading, setLoading] = useState(false);
    const [form] = Form.useForm<FormValues>();
@@ -124,7 +123,7 @@ const AddFileForm: React.FC = () => {
       multiple: false,
       accept: ".pdf",
       disabled: loading,
-      beforeUpload: () => false, // ✅ Prevent auto upload
+      beforeUpload: () => false,
       showUploadList: {
          showPreviewIcon: true,
          showDownloadIcon: true,

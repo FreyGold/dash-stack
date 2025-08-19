@@ -7,11 +7,11 @@ import { updateSession } from "./libs/supabase/middleware";
 const intlMiddleware = createIntlMiddleware(routing);
 
 export async function middleware(request: NextRequest) {
-  const response = intlMiddleware(request);
+   const response = intlMiddleware(request);
 
-  return await updateSession(request, response);
+   return await updateSession(request, response);
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+   matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
