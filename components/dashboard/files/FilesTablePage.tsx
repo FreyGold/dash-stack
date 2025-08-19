@@ -39,7 +39,7 @@ const FilesTablePage = () => {
       const { data, error } = await supabase
         .from("files")
         .select("id, name,destination_url, description, created_at, tag");
-
+      
       if (error) {
         console.error("Error fetching files:", error);
       } else {
