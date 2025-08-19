@@ -12,14 +12,7 @@ import {
 import { CopyIcon } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-
-interface DataType {
-   key: React.Key;
-   name: string;
-   description?: string;
-   date: string;
-   tag: string;
-}
+import { DataType } from "./types";
 
 const data: DataType[] = [
    {
@@ -57,6 +50,20 @@ const data: DataType[] = [
       date: "2025-8-9",
       tag: "Big",
    },
+   {
+      key: "6",
+      name: "Jim Red",
+      description: "Large dataset",
+      date: "2025-8-9",
+      tag: "Big",
+   },
+   {
+      key: "7",
+      name: "Jim Red",
+      description: "Large dataset",
+      date: "2025-8-9",
+      tag: "Big",
+   },
 ];
 
 const uniqueTags: ColumnFilterItem[] = Array.from(
@@ -70,7 +77,6 @@ const FilesTablePage = () => {
    const t = useTranslations("dashboard.filesTable");
    const router = useRouter();
 
-   //TODO: memoize
    const columns: TableColumnsType<DataType> = useMemo(() => {
       return [
          {
