@@ -112,7 +112,7 @@ const AddFileForm: React.FC = () => {
                      description: values.description,
                      destination_url: publicUrl,
                      tag: values.tag,
-                     tag_color: color,
+                     tag_color: values.tag ? color : null,
                   },
                ])
                .select();
