@@ -22,6 +22,7 @@ interface DataType {
    name: string;
    description?: string;
    date: string;
+   short_url: string;
    destination_url: string;
    tag?: string;
    tag_color?: string;
@@ -35,14 +36,13 @@ const FilesTablePage = () => {
    const [qrOpen, setQrOpen] = useState(false);
    const [qrRecord, setQrRecord] = useState<DataType | null>(null);
    const [copied, setCopied] = useState(false);
-   const [deleted, setDeleted] = useState(false);
    const supabase = createClient();
    const fetchFiles = async () => {
       setLoading(true);
       const { data, error } = await supabase
          .from("files")
          .select(
-            "id, name,destination_url, description, created_at, tag, tag_color"
+            "id, name,destination_url,short_url, description, created_at, tag, tag_color"
          );
 
       if (error) {
@@ -53,6 +53,7 @@ const FilesTablePage = () => {
                id: file.id,
                name: file.name,
                description: file.description,
+               short_url: file.short_url,
                destination_url: file.destination_url,
                date: file.created_at,
                tag: file.tag,
@@ -87,7 +88,6 @@ const FilesTablePage = () => {
       value: tag,
    }));
 
-   // columns
    const columns: TableColumnsType<DataType> = useMemo(() => {
       return [
          {
@@ -95,6 +95,11 @@ const FilesTablePage = () => {
             dataIndex: "name",
             fixed: "left",
             width: 250,
+            render: (_, record) => (
+               <Link href={`files/preview/${record.short_url}`}>
+                  {record.name}
+               </Link>
+            ),
             filterDropdown: ({
                setSelectedKeys,
                selectedKeys,
@@ -152,6 +157,7 @@ const FilesTablePage = () => {
             width: 120,
             dataIndex: "date",
             render: (date) => dayjs(date).format("DD MMM 'YY"),
+
             sorter: (a, b) =>
                new Date(a.date).getTime() - new Date(b.date).getTime(),
             sortDirections: ["descend", "ascend"],
@@ -159,6 +165,7 @@ const FilesTablePage = () => {
          {
             title: t("tagColumnTitle"),
             dataIndex: "tag",
+            filters: uniqueTags,
             render: (_, record) => {
                return (
                   <Tag
@@ -168,7 +175,6 @@ const FilesTablePage = () => {
                   </Tag>
                );
             },
-            filters: uniqueTags,
             onFilter: (value, record) =>
                value === "ALL" ? true : record.tag === value,
          },
