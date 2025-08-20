@@ -151,7 +151,7 @@ const FilesTablePage = () => {
             title: t("dateColumnTitle"),
             width: 120,
             dataIndex: "date",
-            render: (date) => dayjs(date).format("DD/MM/YYYY"),
+            render: (date) => dayjs(date).format("DD MMM 'YY"),
             sorter: (a, b) =>
                new Date(a.date).getTime() - new Date(b.date).getTime(),
             sortDirections: ["descend", "ascend"],
@@ -160,7 +160,13 @@ const FilesTablePage = () => {
             title: t("tagColumnTitle"),
             dataIndex: "tag",
             render: (_, record) => {
-               return <Tag color={record.tag_color}>{record.tag}</Tag>;
+               return (
+                  <Tag
+                     color={record.tag_color}
+                     style={{ fontSize: "0.95rem", height: "1.5rem" }}>
+                     {record.tag}
+                  </Tag>
+               );
             },
             filters: uniqueTags,
             onFilter: (value, record) =>
