@@ -1,6 +1,6 @@
 "use client";
 import React, { useMemo, useEffect, useState } from "react";
-import { Button, Input, Space, Table, Tooltip } from "antd";
+import { Button, Input, Space, Table, Tag, Tooltip } from "antd";
 import type { TableColumnsType } from "antd";
 import type { ColumnFilterItem } from "antd/es/table/interface";
 import {
@@ -16,13 +16,15 @@ import { createClient } from "@/libs/supabase/supabaseClient";
 import dayjs from "dayjs";
 import QrCodeModal from "./shared/QrCodeModal";
 import Link from "next/link";
+
 interface DataType {
    id: string;
    name: string;
    description?: string;
    date: string;
    destination_url: string;
-   tag: string;
+   tag?: string;
+   tag_color?: string;
 }
 
 const FilesTablePage = () => {
@@ -33,31 +35,34 @@ const FilesTablePage = () => {
    const [qrOpen, setQrOpen] = useState(false);
    const [qrRecord, setQrRecord] = useState<DataType | null>(null);
    const [copied, setCopied] = useState(false);
+   const [deleted, setDeleted] = useState(false);
    const supabase = createClient();
+   const fetchFiles = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+         .from("files")
+         .select(
+            "id, name,destination_url, description, created_at, tag, tag_color"
+         );
+
+      if (error) {
+         console.error("Error fetching files:", error);
+      } else {
+         setData(
+            data.map((file) => ({
+               id: file.id,
+               name: file.name,
+               description: file.description,
+               destination_url: file.destination_url,
+               date: file.created_at,
+               tag: file.tag,
+               tag_color: file.tag_color,
+            }))
+         );
+      }
+      setLoading(false);
+   };
    useEffect(() => {
-      const fetchFiles = async () => {
-         setLoading(true);
-         const { data, error } = await supabase
-            .from("files")
-            .select("id, name,destination_url, description, created_at, tag");
-
-         if (error) {
-            console.error("Error fetching files:", error);
-         } else {
-            setData(
-               data.map((file) => ({
-                  id: file.id,
-                  name: file.name,
-                  description: file.description,
-                  destination_url: file.destination_url,
-                  date: file.created_at,
-                  tag: file.tag,
-               }))
-            );
-         }
-         setLoading(false);
-      };
-
       fetchFiles();
    }, []);
 
@@ -72,7 +77,11 @@ const FilesTablePage = () => {
    };
    // unique tags for filters
    const uniqueTags: ColumnFilterItem[] = Array.from(
-      new Set(data.map((item) => item.tag))
+      new Set(
+         data
+            .map((item) => item.tag)
+            .filter((tag) => tag !== undefined && tag !== null)
+      )
    ).map((tag) => ({
       text: tag,
       value: tag,
@@ -150,6 +159,9 @@ const FilesTablePage = () => {
          {
             title: t("tagColumnTitle"),
             dataIndex: "tag",
+            render: (_, record) => {
+               return <Tag color={record.tag_color}>{record.tag}</Tag>;
+            },
             filters: uniqueTags,
             onFilter: (value, record) =>
                value === "ALL" ? true : record.tag === value,
@@ -193,6 +205,16 @@ const FilesTablePage = () => {
                         type="text"
                         icon={<TrashIcon size={19} />}
                         danger
+                        onClick={async () => {
+                           const { error } = await supabase
+                              .from("files")
+                              .delete()
+                              .eq("id", record.id);
+                           fetchFiles();
+                           if (error) {
+                              console.error(error);
+                           }
+                        }}
                      />
                   </Tooltip>
                </div>

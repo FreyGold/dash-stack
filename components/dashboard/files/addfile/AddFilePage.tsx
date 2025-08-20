@@ -6,7 +6,7 @@ import AddFileForm from "./AddFileForm";
 const AddFilePage = async () => {
    return (
       <>
-         <div className="flex justify-between items-center flex-col w-full h-[40%]">
+         <div className="flex items-center flex-col w-full h-full gap-15">
             <div className="flex items-center gap-1 self-start w-full py-4 bg-foreground px-4 rounded-sm shadow-xs">
                <Breadcrumb
                   items={[
@@ -23,8 +23,10 @@ const AddFilePage = async () => {
                   ]}
                />
             </div>
-            <div className="flex justify-center items-center flex-col w-full h-[40%] p-4">
-               <AddFileForm></AddFileForm>
+            <div className="flex justify-center items-center flex-col w-[45%] h-[75%] p-4 border-border border-1 bg-foreground rounded-xl">
+               <div className="w-full flex items-center justify-center py-5 px-10">
+                  <AddFileForm></AddFileForm>
+               </div>
             </div>
          </div>
       </>

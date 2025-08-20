@@ -60,7 +60,6 @@ const FormEditFile = ({ file }: { file: FileData }) => {
       if (field === "description" && description !== file.description)
          updateData.description = description;
 
-      // إذا مفيش تغييرات، ما نرسلش الريكوست
       if (Object.keys(updateData).length === 0) {
          showInfo("No Changes To Save!");
          if (field === "destination_url") setIsEditingDestination(false);

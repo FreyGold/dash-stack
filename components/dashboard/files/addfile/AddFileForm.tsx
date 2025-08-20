@@ -2,7 +2,15 @@
 import React, { useState } from "react";
 import { InboxOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
-import { Button, DatePicker, Form, Input, notification, Upload } from "antd";
+import {
+   Button,
+   ColorPicker,
+   DatePicker,
+   Form,
+   Input,
+   notification,
+   Upload,
+} from "antd";
 import { createClient } from "@/libs/supabase/supabaseClient";
 
 const { Dragger } = Upload;
@@ -11,7 +19,9 @@ const { TextArea } = Input;
 interface FormValues {
    title: string;
    description: string;
+   tag: string;
    fileList: any[];
+   tagColor: string;
 }
 
 const AddFileForm: React.FC = () => {
@@ -20,7 +30,7 @@ const AddFileForm: React.FC = () => {
    const [api, contextHolder] = notification.useNotification();
    const [loading, setLoading] = useState(false);
    const [form] = Form.useForm<FormValues>();
-
+   const [color, setColor] = React.useState<string>("#1677ff");
    const showError = (message: string, description?: string) => {
       api.error({
          message,
@@ -93,6 +103,7 @@ const AddFileForm: React.FC = () => {
          console.log("Form submitted with data:", formData);
 
          try {
+            console.log(values);
             const { data, error: dbError } = await supabase
                .from("files")
                .insert([
@@ -100,6 +111,8 @@ const AddFileForm: React.FC = () => {
                      name: values.title,
                      description: values.description,
                      destination_url: publicUrl,
+                     tag: values.tag,
+                     tag_color: color,
                   },
                ])
                .select();
@@ -142,10 +155,12 @@ const AddFileForm: React.FC = () => {
          {contextHolder}
          <Form
             form={form}
-            labelCol={{ span: 6 }}
-            wrapperCol={{ span: 18 }}
-            layout="horizontal"
-            style={{ maxWidth: 800, width: "100%" }}
+            wrapperCol={{ span: 200 }}
+            layout="vertical"
+            style={{
+               maxWidth: 800,
+               width: "100%",
+            }}
             onFinish={handleSubmit}
             initialValues={{ fileList: [] }}>
             <Form.Item
@@ -176,6 +191,32 @@ const AddFileForm: React.FC = () => {
                />
             </Form.Item>
 
+            <Form.Item label="Tag" name="tag">
+               <Form.Item name="tag">
+                  <Input placeholder="Enter file Tag" />
+               </Form.Item>
+
+               <Form.Item
+                  name="tagColor"
+                  style={{
+                     position: "absolute",
+                     right: 0,
+                     top: 0,
+                     width: "10%",
+                  }}>
+                  <ColorPicker
+                     style={{ width: "100%" }}
+                     mode="single"
+                     value={color}
+                     allowClear
+                     onChange={(c) => {
+                        setColor(c.toHexString());
+                     }}
+                     onClear={() => setColor("#1677ff")}
+                  />
+               </Form.Item>
+            </Form.Item>
+
             <Form.Item
                label="Upload"
                name="fileList"
@@ -199,7 +240,7 @@ const AddFileForm: React.FC = () => {
                </Dragger>
             </Form.Item>
 
-            <Form.Item wrapperCol={{ offset: 6, span: 18 }}>
+            <Form.Item wrapperCol={{ span: 18 }}>
                <div className="flex gap-4">
                   <Button
                      type="primary"
