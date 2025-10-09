@@ -3,7 +3,11 @@
 import { useEffect } from 'react';
 
 interface StructuredDataProps {
-  data: any;
+  data: {
+    "@context": string;
+    "@type": string;
+    [key: string]: unknown;
+  };
 }
 
 export function StructuredData({ data }: StructuredDataProps) {

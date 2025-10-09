@@ -16,8 +16,13 @@ export interface SEOMetadata {
   tags?: string[];
 }
 
-export interface OrganizationStructuredData {
-  "@context": "https://schema.org";
+export interface BaseStructuredData {
+  "@context": string;
+  "@type": string;
+  [key: string]: unknown;
+}
+
+export interface OrganizationStructuredData extends BaseStructuredData {
   "@type": "Organization";
   name: string;
   url: string;
@@ -31,8 +36,7 @@ export interface OrganizationStructuredData {
   };
 }
 
-export interface WebSiteStructuredData {
-  "@context": "https://schema.org";
+export interface WebSiteStructuredData extends BaseStructuredData {
   "@type": "WebSite";
   name: string;
   url: string;
@@ -43,6 +47,28 @@ export interface WebSiteStructuredData {
     target: string;
     "query-input": string;
   };
+}
+
+export interface BreadcrumbStructuredData extends BaseStructuredData {
+  "@type": "BreadcrumbList";
+  itemListElement: Array<{
+    "@type": "ListItem";
+    position: number;
+    name: string;
+    item: string;
+  }>;
+}
+
+export interface FAQStructuredData extends BaseStructuredData {
+  "@type": "FAQPage";
+  mainEntity: Array<{
+    "@type": "Question";
+    name: string;
+    acceptedAnswer: {
+      "@type": "Answer";
+      text: string;
+    };
+  }>;
 }
 
 export class SEOUtils {
@@ -143,7 +169,7 @@ export class SEOUtils {
     };
   }
 
-  static generateBreadcrumbStructuredData(items: Array<{ name: string; url: string }>) {
+  static generateBreadcrumbStructuredData(items: Array<{ name: string; url: string }>): BreadcrumbStructuredData {
     return {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -156,7 +182,7 @@ export class SEOUtils {
     };
   }
 
-  static generateFAQStructuredData(faqData: Array<{ question: string; answer: string }>) {
+  static generateFAQStructuredData(faqData: Array<{ question: string; answer: string }>): FAQStructuredData {
     return {
       "@context": "https://schema.org",
       "@type": "FAQPage",
