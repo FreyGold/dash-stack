@@ -1,14 +1,14 @@
-"use client";
-import "@/app/[locale]/globals.css";
-import UiProvider from "@/services/context/UiProvider";
+
 import { Button } from "antd";
 import { redirect } from "next/navigation";
+import Image from "next/image";
+import UiProvider from "@/services/context/UiProvider";
 
 async function NotFound({ params }: { params: Promise<{ locale: string }> }) {
-   let locale = "en";
-   if (params) {
-      locale = (await params).locale;
-   }
+  let locale = "en";
+  if (params) {
+    locale = (await params).locale;
+  }
 
    return (
       <UiProvider locale={locale}>
@@ -17,14 +17,14 @@ async function NotFound({ params }: { params: Promise<{ locale: string }> }) {
                className="w-screen h-screen bg-cover bg-center flex justify-center items-center"
                style={{ backgroundImage: "url('/MainBgHD.png')" }}>
                <div className="absolute inset-0 flex items-center justify-center">
-                  <img
+                  <Image
                      src="/ShapeHD.png"
                      alt="Overlay Object"
                      className="w-full h-full object-cover"
                   />
                </div>
                <div className="z-1 text-text flex justify-center items-center flex-col bg-transparent rounded-3xl md:bg-foreground md:text-2xl text-xs">
-                  <img
+                  <Image
                      src="/404.png"
                      alt="404 not found"
                      width={400}

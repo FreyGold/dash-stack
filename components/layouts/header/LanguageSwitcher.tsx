@@ -1,7 +1,6 @@
 "use client";
 
 import { Select } from "antd";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 

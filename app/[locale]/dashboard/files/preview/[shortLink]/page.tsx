@@ -1,6 +1,6 @@
 import PreviewFile from "@/components/dashboard/files/preview/PreviewFile";
 
-const page = async ({ params }: { params: { shortLink: string } }) => {
+const page = async ({ params }: { params: Promise<{ shortLink: string }> }) => {
   const { shortLink: url } = await params;
   return (
     <>

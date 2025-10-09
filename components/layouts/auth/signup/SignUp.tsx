@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { Form, Input, Button, Card, message, notification } from "antd";
+import { Form, Input, Button, Card, notification } from "antd";
 import { useEmailAuth } from "@/services/hooks/useEmailAuth";
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ function SignUp() {
 
    const handleSignup = async (values: { email: string; password: string }) => {
       setLoading(true);
-      const { user, error } = await signUpWithEmail(
+      const { error } = await signUpWithEmail(
          values.email,
          values.password
       );
@@ -51,7 +51,7 @@ function SignUp() {
          }, 7000);
          return () => clearTimeout(timer);
       }
-   }, [signupSuccess, api]);
+   }, [signupSuccess, api, locale, router]);
 
    return (
       <>
@@ -74,8 +74,6 @@ function SignUp() {
                      label={<span className="font-medium">Email</span>}
                      name="email"
                      rules={[
-                        { required: true, message: "Please enter your email" },
-                        { type: "email", message: "Invalid email format" },
                      ]}>
                      <Input
                         size="large"

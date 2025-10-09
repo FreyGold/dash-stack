@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { InboxOutlined } from "@ant-design/icons";
-import type { UploadProps } from "antd";
+import type { UploadProps, UploadFile } from "antd";
 import {
    Button,
    ColorPicker,
-   DatePicker,
    Form,
    Input,
    notification,
@@ -20,7 +19,7 @@ interface FormValues {
    title: string;
    description: string;
    tag: string;
-   fileList: any[];
+   fileList: UploadFile[];
    tagColor: string;
 }
 
@@ -104,7 +103,7 @@ const AddFileForm: React.FC = () => {
 
          try {
             console.log(values);
-            const { data, error: dbError } = await supabase
+            const { error: dbError } = await supabase
                .from("files")
                .insert([
                   {
@@ -143,7 +142,7 @@ const AddFileForm: React.FC = () => {
          showRemoveIcon: true,
       },
       onPreview: (file) => {
-         const url = (file as any).url || (file as any).response;
+         const url = (file as UploadFile).response || (file as UploadFile).url;
          if (url) {
             window.open(url, "_blank");
          }

@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/libs/supabase/supabaseClient";
 import { RPDefaultLayout, RPPages, RPProvider } from "@pdf-viewer/react";
 import { Breadcrumb } from "antd";
-import { Link as LinkIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 interface FileData {
@@ -22,7 +20,6 @@ interface PreviewFileProps {
 const PreviewFile = ({ url }: PreviewFileProps) => {
    const [file, setFile] = useState<FileData | null>(null);
    const [loading, setLoading] = useState(true);
-   const router = useRouter();
 
    useEffect(() => {
       const fetchFile = async () => {

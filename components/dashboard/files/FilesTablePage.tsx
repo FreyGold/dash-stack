@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo, useEffect, useState, useCallback } from "react";
 import { Button, Input, Space, Table, Tag, Tooltip } from "antd";
 import type { TableColumnsType } from "antd";
 import type { ColumnFilterItem } from "antd/es/table/interface";
@@ -37,7 +37,7 @@ const FilesTablePage = () => {
    const [qrRecord, setQrRecord] = useState<DataType | null>(null);
    const [copied, setCopied] = useState(false);
    const supabase = createClient();
-   const fetchFiles = async () => {
+   const fetchFiles = useCallback(async () => {
       setLoading(true);
       const { data, error } = await supabase
          .from("files")
@@ -62,10 +62,10 @@ const FilesTablePage = () => {
          );
       }
       setLoading(false);
-   };
+   }, [supabase]);
    useEffect(() => {
       fetchFiles();
-   }, []);
+   }, [fetchFiles]);
 
    const handleCopy = async (url: string) => {
       try {
@@ -235,7 +235,7 @@ const FilesTablePage = () => {
             ),
          },
       ];
-   }, [t, router, uniqueTags]);
+   }, [t, router, uniqueTags, copied, fetchFiles, supabase]);
 
    return (
       <div className="overflow-x-auto">

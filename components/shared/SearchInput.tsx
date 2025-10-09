@@ -14,9 +14,7 @@ function SearchInput({ isMobile }: { isMobile: boolean }) {
 
    const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
-
+   const handleChange = () => {
       if (debounceTimeoutRef.current) {
          clearTimeout(debounceTimeoutRef.current);
       }

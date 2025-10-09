@@ -43,7 +43,7 @@ function Login() {
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [loginSuccess, api]);
+  }, [loginSuccess, api, locale, router]);
 
   return (
     <>
