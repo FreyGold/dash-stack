@@ -94,6 +94,7 @@ function DashboardSidebar({
                   // setActiveId(() => item.url);
                }}
                isActive={item.url === activeId}
+               disabled={item.disabled}
             />
          ))}
          <div className="border-background border/80 border w-full my-3"></div>
@@ -118,6 +119,7 @@ function DashboardSidebar({
                      )?.["title"]
                }
                isActive={item.url === activeId}
+               disabled={item.disabled}
             />
          ))}
          <div className="border-background border/80 border w-full my-3"></div>
@@ -140,6 +142,7 @@ function DashboardSidebar({
                      )?.["title"]
                }
                isActive={item.url === activeId}
+               disabled={item.disabled}
             />
          ))}
       </div>
