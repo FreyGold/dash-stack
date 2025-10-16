@@ -19,8 +19,8 @@ function LoginMainPage() {
       </div>
       <div className="z-1">
         <Login />
-        <div className="absolute left-4 bottom-4 bg-white p-3 border border-black flex flex-col gap-2">
-          <p>Signing up works but in case of problems use this</p>
+        <div className="absolute bottom-4 bg-white p-3 border border-black flex flex-col gap-2 rounded-xl">
+          <p>Signing up works but just in case</p>
           <p>burs1927@gustr.com</p>
           <p>123456</p>
         </div>
