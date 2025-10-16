@@ -19,7 +19,13 @@ function LoginMainPage() {
       </div>
       <div className="z-1">
         <Login />
+        <div className="absolute left-4 bottom-4 bg-white p-3 border border-black flex flex-col gap-2">
+          <p>Signing up works but in case of problems use this</p>
+          <p>burs1927@gustr.com</p>
+          <p>123456</p>
+        </div>
       </div>
+      
     </div>
   );
 }
